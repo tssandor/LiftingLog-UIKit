@@ -11,6 +11,8 @@ import Foundation
 var exerciseTypeDB: [ExerciseType] = []
 
 var currentWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+var newWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+var workouts: [Workout] = []
 
 func setupExerciseDB() {
   exerciseTypeDB.append(ExerciseType(exerciseName: "Deadlift", exerciseCategory: "Barbell"))
@@ -22,7 +24,7 @@ func setupExerciseDB() {
 }
 
 func addDummyExercises() {
-  currentWorkout.dateTime = Date()
+  currentWorkout.dateTime = Date(timeIntervalSince1970: 1596034562)
   
   currentWorkout.exerciseGroupsInWorkout.append(
     ExerciseGroup(
@@ -107,6 +109,92 @@ func addDummyExercises() {
     )
   )
 
+  newWorkout.dateTime = Date(timeIntervalSince1970: 1596030562)
   
+  newWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
+      exercises:
+        [Exercise(sets: 3, reps: 5, weight: 110),
+         Exercise(sets: 2, reps: 5, weight: 120)]
+    )
+  )
+
+  newWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
+      exercises:
+        [Exercise(sets: 3, reps: 5, weight: 110),
+         Exercise(sets: 2, reps: 5, weight: 120)]
+    )
+  )
+
+  newWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
+      exercises:
+        [Exercise(sets: 3, reps: 5, weight: 110),
+         Exercise(sets: 2, reps: 5, weight: 120),
+         Exercise(sets: 3, reps: 5, weight: 110),
+         Exercise(sets: 2, reps: 5, weight: 120)]
+    )
+  )
+
+  newWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
+      exercises:
+        [Exercise(sets: 3, reps: 5, weight: 110),
+         Exercise(sets: 2, reps: 5, weight: 120)]
+    )
+  )
+
+  newWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
+      exercises:
+        [Exercise(sets: 3, reps: 5, weight: 110),
+         Exercise(sets: 2, reps: 5, weight: 120)]
+    )
+  )
+
+  newWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
+      exercises:
+        [Exercise(sets: 3, reps: 5, weight: 110),
+         Exercise(sets: 2, reps: 5, weight: 120)]
+    )
+  )
+
+  newWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
+      exercises:
+        [Exercise(sets: 3, reps: 5, weight: 110),
+         Exercise(sets: 2, reps: 5, weight: 120)]
+    )
+  )
+
+  
+  newWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "N Bench Press", exerciseCategory: "Barbell"),
+      exercises:
+        [Exercise(sets: 5, reps: 5, weight: 60)]
+    )
+  )
+
+  newWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "N Bent Over Row (Barbell)", exerciseCategory: "Barbell"),
+      exercises:
+        [Exercise(sets: 3, reps: 5, weight: 50),
+         Exercise(sets: 2, reps: 5, weight: 55.5)]
+    )
+  )
+
+  workouts.append(currentWorkout)
+  workouts.append(newWorkout)
   
 }

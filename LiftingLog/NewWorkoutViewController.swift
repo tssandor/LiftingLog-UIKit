@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.title = "Log new workout"
+    self.tableView.separatorStyle = .none
     setupExerciseDB()
     addDummyExercises()
     currentWorkout.exerciseGroupsInWorkout.reverse()
