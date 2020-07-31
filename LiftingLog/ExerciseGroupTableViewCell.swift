@@ -14,15 +14,15 @@ class ExerciseGroupTableViewCell: UITableViewCell {
   @IBOutlet weak var exerciseNameLabel: UILabel!
   @IBOutlet weak var setsMultilineLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+  }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
+    // Configure the view for the selected state
+  }
 
 }

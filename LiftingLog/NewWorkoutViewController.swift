@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   @IBOutlet var tableView: UITableView!
 
@@ -29,6 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseGroupCell", for: indexPath) as! ExerciseGroupTableViewCell
+
     cell.exerciseCategoryLabel.text = currentWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseCategory
     cell.exerciseNameLabel.text = currentWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseName
 

@@ -12,6 +12,7 @@ var exerciseTypeDB: [ExerciseType] = []
 
 var currentWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
 var newWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+var newestWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
 var workouts: [Workout] = []
 
 func setupExerciseDB() {
@@ -37,7 +38,7 @@ func addDummyExercises() {
 
   currentWorkout.exerciseGroupsInWorkout.append(
     ExerciseGroup(
-      exerciseType: ExerciseType(exerciseName: "Deadlift", exerciseCategory: "Barbell"),
+      exerciseType: ExerciseType(exerciseName: "Bent Over Row (dumbbell)", exerciseCategory: "Dumbbell"),
       exercises:
         [Exercise(sets: 3, reps: 5, weight: 110),
          Exercise(sets: 2, reps: 5, weight: 120)]
@@ -109,7 +110,7 @@ func addDummyExercises() {
     )
   )
 
-  newWorkout.dateTime = Date(timeIntervalSince1970: 1596030562)
+  newWorkout.dateTime = Date(timeIntervalSince1970: 1596034962)
   
   newWorkout.exerciseGroupsInWorkout.append(
     ExerciseGroup(
@@ -151,34 +152,6 @@ func addDummyExercises() {
 
   newWorkout.exerciseGroupsInWorkout.append(
     ExerciseGroup(
-      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
-      exercises:
-        [Exercise(sets: 3, reps: 5, weight: 110),
-         Exercise(sets: 2, reps: 5, weight: 120)]
-    )
-  )
-
-  newWorkout.exerciseGroupsInWorkout.append(
-    ExerciseGroup(
-      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
-      exercises:
-        [Exercise(sets: 3, reps: 5, weight: 110),
-         Exercise(sets: 2, reps: 5, weight: 120)]
-    )
-  )
-
-  newWorkout.exerciseGroupsInWorkout.append(
-    ExerciseGroup(
-      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
-      exercises:
-        [Exercise(sets: 3, reps: 5, weight: 110),
-         Exercise(sets: 2, reps: 5, weight: 120)]
-    )
-  )
-
-  
-  newWorkout.exerciseGroupsInWorkout.append(
-    ExerciseGroup(
       exerciseType: ExerciseType(exerciseName: "N Bench Press", exerciseCategory: "Barbell"),
       exercises:
         [Exercise(sets: 5, reps: 5, weight: 60)]
@@ -194,7 +167,29 @@ func addDummyExercises() {
     )
   )
 
+  newestWorkout.dateTime = Date(timeIntervalSince1970: 1596035962)
+  
+  newestWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "Kettlebell Swing", exerciseCategory: "Kettlebell"),
+      exercises:
+        [Exercise(sets: 3, reps: 5, weight: 110),
+         Exercise(sets: 2, reps: 5, weight: 120)]
+    )
+  )
+
+  newestWorkout.exerciseGroupsInWorkout.append(
+    ExerciseGroup(
+      exerciseType: ExerciseType(exerciseName: "Kettlebell Clean", exerciseCategory: "Kettlebell"),
+      exercises:
+        [Exercise(sets: 3, reps: 5, weight: 110),
+         Exercise(sets: 2, reps: 5, weight: 120)]
+    )
+  )
+
+  
   workouts.append(currentWorkout)
   workouts.append(newWorkout)
+  workouts.append(newestWorkout)
   
 }
