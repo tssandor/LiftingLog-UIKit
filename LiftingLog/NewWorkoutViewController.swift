@@ -14,7 +14,7 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Log new workout"
+    self.title = "New Workout #\(workouts.count)"
     self.tableView.separatorStyle = .none
     setupExerciseDB()
     addDummyExercises()

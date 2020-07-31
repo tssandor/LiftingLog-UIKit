@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dyl-15-AcU">
-                                <rect key="frame" x="0.0" y="106" width="414" height="790"/>
+                                <rect key="frame" x="0.0" y="150" width="414" height="746"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseGroupCell" id="HwH-pr-E5L" customClass="NewWorkoutView_ExerciseGroupTableViewCell" customModule="LiftingLog" customModuleProvider="target">
@@ -71,7 +71,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5H-3e-9ns">
-                                <rect key="frame" x="146.5" y="60" width="121" height="30"/>
+                                <rect key="frame" x="146.5" y="104" width="121" height="30"/>
                                 <state key="normal" title="Add new exercise"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KWF-Zm-K8n"/>
@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="101.78571428571428"/>
+            <point key="canvasLocation" x="1916" y="807"/>
         </scene>
         <!--Workouts List View Controller-->
         <scene sceneID="e3M-XU-lhi">
@@ -121,6 +121,7 @@
                                 <state key="normal" title="Add new workout"/>
                                 <connections>
                                     <action selector="pressedAddNewWorkout:" destination="kRx-7x-wvF" eventType="touchUpInside" id="6G7-su-fV5"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="zGD-oG-mQG"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zU9-dj-AIW">
