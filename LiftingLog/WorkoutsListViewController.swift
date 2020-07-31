@@ -59,6 +59,20 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     return cell
   }
   
+  var selectedWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    selectedWorkout = workouts[indexPath.row]
+    performSegue(withIdentifier: "WorkoutDetailSegue", sender: nil)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "WorkoutDetailSegue" {
+      let workoutDetailTableViewController = segue.destination as! WorkoutDetailViewController
+      workoutDetailTableViewController.workoutDisplayed = selectedWorkout
+    }
+  }
+  
   @IBAction func pressedAddNewWorkout(_ sender: Any) {
     workouts.reverse()
     workouts.append(currentWorkout)

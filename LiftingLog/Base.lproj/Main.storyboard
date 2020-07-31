@@ -171,6 +171,7 @@
                                             <outlet property="workoutDateLabel" destination="mpz-ev-yU5" id="Q7R-Hj-tJh"/>
                                             <outlet property="workoutDetailsLabel" destination="Wel-hp-fZB" id="2TL-uz-88t"/>
                                             <outlet property="workoutNumberLabel" destination="pWN-gZ-QaV" id="lFV-pI-11n"/>
+                                            <segue destination="jFm-DT-Nmg" kind="show" identifier="WorkoutDetailSegue" id="Ms5-F9-Fvh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -220,6 +221,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh8-Eb-BrZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="806.91964285714278"/>
+        </scene>
+        <!--Workout Detail View Controller-->
+        <scene sceneID="i80-9S-BRj">
+            <objects>
+                <viewController id="jFm-DT-Nmg" customClass="WorkoutDetailViewController" customModule="LiftingLog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lh9-yP-asY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fa8-W3-fqP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutDetailCell" id="wWR-Ix-Myc" customClass="WorkoutDetailTableViewCell" customModule="LiftingLog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="121"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wWR-Ix-Myc" id="t2A-lN-LvJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brk-9Q-z9h">
+                                                    <rect key="frame" x="20" y="19" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2i-Ue-OFd">
+                                                    <rect key="frame" x="20" y="47.5" width="374" height="29.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4Y-up-pDv">
+                                                    <rect key="frame" x="20" y="85" width="374" height="17"/>
+                                                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="brk-9Q-z9h" firstAttribute="top" secondItem="t2A-lN-LvJ" secondAttribute="topMargin" constant="8" id="2Pj-bH-Y3f"/>
+                                                <constraint firstItem="P4Y-up-pDv" firstAttribute="top" secondItem="O2i-Ue-OFd" secondAttribute="bottom" constant="8" id="Db1-WV-CrL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="P4Y-up-pDv" secondAttribute="trailing" id="HUi-Yo-Vc4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="O2i-Ue-OFd" secondAttribute="trailing" id="OfA-sQ-Qex"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="P4Y-up-pDv" secondAttribute="bottom" constant="8" id="P3U-ps-iQS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="brk-9Q-z9h" secondAttribute="trailing" id="Ya1-4N-RX0"/>
+                                                <constraint firstItem="brk-9Q-z9h" firstAttribute="leading" secondItem="t2A-lN-LvJ" secondAttribute="leadingMargin" id="eqC-6V-DIn"/>
+                                                <constraint firstItem="P4Y-up-pDv" firstAttribute="leading" secondItem="t2A-lN-LvJ" secondAttribute="leadingMargin" id="fv0-kD-kfB"/>
+                                                <constraint firstItem="O2i-Ue-OFd" firstAttribute="top" secondItem="brk-9Q-z9h" secondAttribute="bottom" constant="8" id="jRq-Oa-JC4"/>
+                                                <constraint firstItem="O2i-Ue-OFd" firstAttribute="leading" secondItem="t2A-lN-LvJ" secondAttribute="leadingMargin" id="kDI-Ge-thj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="exerciseCategoryLabel" destination="brk-9Q-z9h" id="b6E-BI-7Pr"/>
+                                            <outlet property="exerciseNameLabel" destination="O2i-Ue-OFd" id="P5g-8Z-jGE"/>
+                                            <outlet property="setsMultilineLabel" destination="P4Y-up-pDv" id="4a3-4b-Ju9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jFm-DT-Nmg" id="pku-Xl-ZAJ"/>
+                                    <outlet property="delegate" destination="jFm-DT-Nmg" id="Sg2-Cc-c0n"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Fa8-W3-fqP" firstAttribute="trailing" secondItem="z7s-Ua-pQr" secondAttribute="trailing" id="aZv-tn-8UJ"/>
+                            <constraint firstItem="Fa8-W3-fqP" firstAttribute="leading" secondItem="z7s-Ua-pQr" secondAttribute="leading" id="oou-gF-5Kz"/>
+                            <constraint firstAttribute="bottom" secondItem="Fa8-W3-fqP" secondAttribute="bottom" id="rfa-fU-qlB"/>
+                            <constraint firstItem="Fa8-W3-fqP" firstAttribute="top" secondItem="z7s-Ua-pQr" secondAttribute="top" id="xv5-WO-aeJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z7s-Ua-pQr"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SGN-kB-Y9y">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="tZi-En-iqj"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Fa8-W3-fqP" id="Me6-8C-TEi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4My-0f-pxI" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1916" y="1546"/>
         </scene>
     </scenes>
 </document>
