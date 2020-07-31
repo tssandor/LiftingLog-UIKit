@@ -15,6 +15,9 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.separatorStyle = .none
+    self.title = "LiftingLog"
+    self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    self.tableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     setupExerciseDB()
     addDummyExercises()
     workouts.reverse()
@@ -54,6 +57,13 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     cell.workoutDetailsLabel.text = detailsText
       
     return cell
+  }
+  
+  @IBAction func pressedAddNewWorkout(_ sender: Any) {
+    workouts.reverse()
+    workouts.append(currentWorkout)
+    workouts.reverse()
+    self.tableView.reloadData()
   }
   
   /*

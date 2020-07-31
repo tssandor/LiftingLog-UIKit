@@ -28,7 +28,7 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseGroupCell", for: indexPath) as! ExerciseGroupTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseGroupCell", for: indexPath) as! NewWorkoutView_ExerciseGroupTableViewCell
 
     cell.exerciseCategoryLabel.text = currentWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseCategory
     cell.exerciseNameLabel.text = currentWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseName

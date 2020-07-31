@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExerciseGroupTableViewCell: UITableViewCell {
+class NewWorkoutView_ExerciseGroupTableViewCell: UITableViewCell {
   
   @IBOutlet weak var exerciseCategoryLabel: UILabel!
   @IBOutlet weak var exerciseNameLabel: UILabel!
