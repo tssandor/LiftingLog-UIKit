@@ -11,6 +11,7 @@ import UIKit
 class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   @IBOutlet var tableView: UITableView!
+  @IBOutlet weak var noWorkoutsLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -21,6 +22,11 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     setupExerciseDB()
     addDummyExercises()
     workouts.reverse()
+    noWorkoutsLabel.isHidden = true
+    if workouts.count == 0 {
+      tableView.isHidden = true
+      noWorkoutsLabel.isHidden = false
+    }
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,6 +80,8 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   @IBAction func pressedAddNewWorkout(_ sender: Any) {
+    tableView.isHidden = false
+    noWorkoutsLabel.isHidden = true
     workouts.reverse()
     workouts.append(currentWorkout)
     workouts.reverse()

@@ -178,13 +178,21 @@
                                     <outlet property="delegate" destination="kRx-7x-wvF" id="fby-GN-S42"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No workouts yet 🏋️‍♀️🥺" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tof-m1-vQ3">
+                                <rect key="frame" x="103.5" y="436.5" width="207" height="23.5"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="zU9-dj-AIW" secondAttribute="bottom" id="2r8-Y7-6j4"/>
                             <constraint firstItem="x0a-aa-Vra" firstAttribute="trailing" secondItem="9ni-Og-yUy" secondAttribute="trailing" constant="16" id="5Sf-V1-POM"/>
+                            <constraint firstItem="Tof-m1-vQ3" firstAttribute="centerX" secondItem="QeG-Zx-s54" secondAttribute="centerX" id="ALI-TU-fWG"/>
                             <constraint firstItem="zU9-dj-AIW" firstAttribute="leading" secondItem="x0a-aa-Vra" secondAttribute="leading" id="DQC-eq-ewO"/>
                             <constraint firstItem="zU9-dj-AIW" firstAttribute="top" secondItem="8De-46-mM5" secondAttribute="bottom" constant="16" id="OSX-8V-Ypb"/>
+                            <constraint firstItem="Tof-m1-vQ3" firstAttribute="centerY" secondItem="QeG-Zx-s54" secondAttribute="centerY" id="QtN-aC-v9f"/>
                             <constraint firstItem="zU9-dj-AIW" firstAttribute="trailing" secondItem="x0a-aa-Vra" secondAttribute="trailing" id="c6G-vW-w9V"/>
                             <constraint firstItem="8De-46-mM5" firstAttribute="centerX" secondItem="QeG-Zx-s54" secondAttribute="centerX" id="dN9-gP-XEr"/>
                             <constraint firstItem="8De-46-mM5" firstAttribute="top" secondItem="9ni-Og-yUy" secondAttribute="bottom" constant="16" id="r3C-xY-kUZ"/>
@@ -195,6 +203,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Tnl-u2-qWK"/>
                     <connections>
+                        <outlet property="noWorkoutsLabel" destination="Tof-m1-vQ3" id="Xv3-xW-DWz"/>
                         <outlet property="tableView" destination="zU9-dj-AIW" id="P86-Ua-AnC"/>
                         <segue destination="jFm-DT-Nmg" kind="show" identifier="WorkoutDetailSegue" id="LdV-IY-WMZ"/>
                     </connections>
