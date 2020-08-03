@@ -11,13 +11,15 @@ import UIKit
 class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   @IBOutlet var tableView: UITableView!
+  
+  var newWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "New Workout #\(workouts.count)"
+    self.title = "New Workout #\(workouts.count+1)"
     self.tableView.separatorStyle = .none
-    setupExerciseDB()
-    addDummyExercises()
+//    setupExerciseDB()
+//    addDummyExercises()
     currentWorkout.exerciseGroupsInWorkout.reverse()
   }
   
@@ -64,6 +66,28 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     self.tableView.reloadData()
   }
 
+  @IBAction func cancelButtonPressed(_ sender: Any) {
+    if newWorkout.exerciseGroupsInWorkout.count == 0 {
+      self.navigationController?.popViewController(animated: true)
+    } else {
+      let alertController = UIAlertController(title: "Watch out!", message: "This workout is not empty. Are you sure you want to discard it?", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+          self.navigationController?.popViewController(animated: true)
+        }
+        alertController.addAction(OKAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+          print("Cancel button tapped");
+        }
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
+    }
+//    If you pushed the viewController you use self.navigationController?.popViewController(animated: true)
+//
+//    If you presented it modally you use self.dismiss(self, animated: true)
+//
+//    When its presented from a modal segue you use self.presentingViewController?.dismiss(animated: true, completion: nil)
+  }
+  
 }
 
 

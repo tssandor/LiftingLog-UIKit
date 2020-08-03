@@ -13,6 +13,8 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   @IBOutlet var tableView: UITableView!
   @IBOutlet weak var noWorkoutsLabel: UILabel!
   
+  var selectedWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.separatorStyle = .none
@@ -23,6 +25,9 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     addDummyExercises()
     workouts.reverse()
     noWorkoutsLabel.isHidden = true
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
     if workouts.count == 0 {
       tableView.isHidden = true
       noWorkoutsLabel.isHidden = false
@@ -65,8 +70,6 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     return cell
   }
   
-  var selectedWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
-  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     selectedWorkout = workouts[indexPath.row]
     performSegue(withIdentifier: "WorkoutDetailSegue", sender: nil)
@@ -80,12 +83,13 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   @IBAction func pressedAddNewWorkout(_ sender: Any) {
-    tableView.isHidden = false
-    noWorkoutsLabel.isHidden = true
-    workouts.reverse()
-    workouts.append(currentWorkout)
-    workouts.reverse()
-    self.tableView.reloadData()
+//    tableView.isHidden = false
+//    noWorkoutsLabel.isHidden = true
+//    workouts.reverse()
+//    workouts.append(currentWorkout)
+//    workouts.reverse()
+//    self.tableView.reloadData()
+    performSegue(withIdentifier: "AddNewWorkoutSegue", sender: nil)
   }
   
   /*
