@@ -8,7 +8,12 @@
 
 import UIKit
 
-class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChildViewControllerDelegate {
+ 
+  func childViewControllerResponse(newlyAddedExerciseGroup: ExerciseGroup) {
+    print(newlyAddedExerciseGroup)
+    newWorkout.exerciseGroupsInWorkout.append(newlyAddedExerciseGroup)
+  }
   
   @IBOutlet var tableView: UITableView!
   @IBOutlet weak var noExercisesLabel: UILabel!
@@ -63,7 +68,10 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   }
   
   @IBAction func pressedAddNewExerciseButton(_ sender: Any) {
-    performSegue(withIdentifier: "AddNewExerciseSegue", sender: nil)
+    let goNext = storyboard!.instantiateViewController(withIdentifier: "NewExerciseVewController") as! NewExerciseViewController
+    goNext.delegate = self
+    self.navigationController?.pushViewController(goNext, animated: true)
+//    performSegue(withIdentifier: "AddNewExerciseSegue", sender: nil)
 //    self.tableView.isHidden = false
 //    self.noExercisesLabel.isHidden = true
 //    newWorkout.exerciseGroupsInWorkout.reverse()

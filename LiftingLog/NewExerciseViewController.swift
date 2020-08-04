@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol ChildViewControllerDelegate
+{
+  func childViewControllerResponse(newlyAddedExerciseGroup: ExerciseGroup)
+}
+
 class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate {
+  
+  var delegate: ChildViewControllerDelegate?
   
   var setRepWeightPickerData: [[String]] = [[String]]()
   var selectedSets: String = ""
@@ -90,6 +97,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
 //    newWorkout.exerciseGroupsInWorkout.append(ExerciseGroup(exerciseType: ExerciseType(exerciseName: "Appended from view", exerciseCategory: "Dumbbell")
 //    , exercises: [Exercise(sets: 3, reps: 3, weight: 125.5)]))
 //    print(newWorkout)
+    self.delegate?.childViewControllerResponse(newlyAddedExerciseGroup: ExerciseGroup(exerciseType: ExerciseType(exerciseName: "Appended from view", exerciseCategory: "Dumbbell"), exercises: [Exercise(sets: 3, reps: 3, weight: 125.5)]))
   }
   
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
