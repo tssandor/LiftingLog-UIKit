@@ -10,9 +10,9 @@ import Foundation
 
 var exerciseTypeDB: [ExerciseType] = []
 
-var currentWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
-var nextWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
-var newestWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+//var currentWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+//var nextWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+//var newestWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
 var workouts: [Workout] = []
 
 func setupExerciseDB() {

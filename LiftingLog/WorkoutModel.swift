@@ -36,4 +36,5 @@ struct ExerciseGroup {
 struct Workout {
   var dateTime: Date
   var exerciseGroupsInWorkout: [ExerciseGroup]
+  var rating: Int
 }

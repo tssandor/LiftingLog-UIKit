@@ -10,8 +10,8 @@ import UIKit
 
 class WorkoutsListTableViewCell: UITableViewCell {
 
-  @IBOutlet weak var workoutNumberLabel: UILabel!
-  @IBOutlet weak var workoutDateLabel: UILabel!
+  @IBOutlet weak var workoutStarsLabel: UILabel!
+  @IBOutlet weak var workoutNumberAndDateLabel: UILabel!
   @IBOutlet weak var workoutDetailsLabel: UILabel!
   
   override func awakeFromNib() {

@@ -17,28 +17,30 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     saveButton.isEnabled = true
   }
   
-  @IBOutlet var tableView: UITableView!
+  @IBOutlet var exerciseGroupsTableView: UITableView!
   @IBOutlet weak var noExercisesLabel: UILabel!
   @IBOutlet weak var saveButton: UIBarButtonItem!
   
-  var newWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+  var newWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "New Workout #\(workouts.count+1)"
-    self.tableView.separatorStyle = .none
+    self.exerciseGroupsTableView.separatorStyle = .none
     newWorkout.exerciseGroupsInWorkout.reverse()
     saveButton.isEnabled = false
+    self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    self.exerciseGroupsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
   }
   
   override func viewWillAppear(_ animated: Bool) {
     if newWorkout.exerciseGroupsInWorkout.count == 0 {
-      self.tableView.isHidden = true
+      self.exerciseGroupsTableView.isHidden = true
       self.noExercisesLabel.isHidden = false
     } else {
-      self.tableView.isHidden = false
+      self.exerciseGroupsTableView.isHidden = false
       self.noExercisesLabel.isHidden = true
-      self.tableView.reloadData()
+      self.exerciseGroupsTableView.reloadData()
     }
   }
   
@@ -50,6 +52,7 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseGroupCell", for: indexPath) as! NewWorkoutTableViewCell
 
     cell.exerciseCategoryLabel.text = newWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseCategory
+    cell.exerciseCategoryLabel.isHidden = true
     cell.exerciseNameLabel.text = newWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseName
 
     var setsDetails: String = ""

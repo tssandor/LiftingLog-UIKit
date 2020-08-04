@@ -12,7 +12,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
   
   @IBOutlet var tableView: UITableView!
   
-  var workoutDisplayed: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+  var workoutDisplayed: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 5)
   
   override func viewDidLoad() {
     super.viewDidLoad()
