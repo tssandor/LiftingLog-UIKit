@@ -28,9 +28,12 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     if newWorkout.exerciseGroupsInWorkout.count == 0 {
       self.tableView.isHidden = true
       self.noExercisesLabel.isHidden = false
+      print("none")
     } else {
       self.tableView.isHidden = false
       self.noExercisesLabel.isHidden = true
+      self.tableView.reloadData()
+      print(newWorkout)
     }
   }
   
@@ -59,7 +62,7 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     return cell
   }
   
-  @IBAction func buttonPressed(_ sender: Any) {
+  @IBAction func pressedAddNewExerciseButton(_ sender: Any) {
     performSegue(withIdentifier: "AddNewExerciseSegue", sender: nil)
 //    self.tableView.isHidden = false
 //    self.noExercisesLabel.isHidden = true
@@ -78,7 +81,7 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
 //    self.tableView.reloadData()
   }
 
-  @IBAction func cancelButtonPressed(_ sender: Any) {
+  @IBAction func pressedCancelButton(_ sender: Any) {
     if newWorkout.exerciseGroupsInWorkout.count == 0 {
       self.navigationController?.popViewController(animated: true)
     } else {

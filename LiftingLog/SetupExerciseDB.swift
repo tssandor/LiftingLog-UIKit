@@ -11,7 +11,7 @@ import Foundation
 var exerciseTypeDB: [ExerciseType] = []
 
 var currentWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
-var newWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
+var nextWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
 var newestWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
 var workouts: [Workout] = []
 
@@ -110,9 +110,9 @@ func addDummyExercises() {
     )
   )
 
-  newWorkout.dateTime = Date(timeIntervalSince1970: 1596034962)
+  nextWorkout.dateTime = Date(timeIntervalSince1970: 1596034962)
   
-  newWorkout.exerciseGroupsInWorkout.append(
+  nextWorkout.exerciseGroupsInWorkout.append(
     ExerciseGroup(
       exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
       exercises:
@@ -121,7 +121,7 @@ func addDummyExercises() {
     )
   )
 
-  newWorkout.exerciseGroupsInWorkout.append(
+  nextWorkout.exerciseGroupsInWorkout.append(
     ExerciseGroup(
       exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
       exercises:
@@ -130,7 +130,7 @@ func addDummyExercises() {
     )
   )
 
-  newWorkout.exerciseGroupsInWorkout.append(
+  nextWorkout.exerciseGroupsInWorkout.append(
     ExerciseGroup(
       exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
       exercises:
@@ -141,7 +141,7 @@ func addDummyExercises() {
     )
   )
 
-  newWorkout.exerciseGroupsInWorkout.append(
+  nextWorkout.exerciseGroupsInWorkout.append(
     ExerciseGroup(
       exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
       exercises:
@@ -150,7 +150,7 @@ func addDummyExercises() {
     )
   )
 
-  newWorkout.exerciseGroupsInWorkout.append(
+  nextWorkout.exerciseGroupsInWorkout.append(
     ExerciseGroup(
       exerciseType: ExerciseType(exerciseName: "N Bench Press", exerciseCategory: "Barbell"),
       exercises:
@@ -158,7 +158,7 @@ func addDummyExercises() {
     )
   )
 
-  newWorkout.exerciseGroupsInWorkout.append(
+  nextWorkout.exerciseGroupsInWorkout.append(
     ExerciseGroup(
       exerciseType: ExerciseType(exerciseName: "N Bent Over Row (Barbell)", exerciseCategory: "Barbell"),
       exercises:
@@ -189,7 +189,7 @@ func addDummyExercises() {
 
   
   workouts.append(currentWorkout)
-  workouts.append(newWorkout)
+  workouts.append(nextWorkout)
   workouts.append(newestWorkout)
   
 }

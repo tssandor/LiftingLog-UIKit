@@ -8,6 +8,8 @@
 
 import Foundation
 
+var weightUnit: String = "kg"
+
 //enum Equipment {
 //  case dumbbell
 //  case barbell
