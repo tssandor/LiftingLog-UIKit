@@ -15,25 +15,11 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
   var workoutDisplayed: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
   
   override func viewDidLoad() {
-  
     super.viewDidLoad()
-    
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
     self.title = dateFormatter.string(from: workoutDisplayed.dateTime)
-      // Do any additional setup after loading the view.
   }
-  
-
-  /*
-  // MARK: - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destination.
-      // Pass the selected object to the new view controller.
-  }
-  */
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return workoutDisplayed.exerciseGroupsInWorkout.count
@@ -58,8 +44,6 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     cell.setsMultilineLabel.text = setsDetails
 
     return cell
-
   }
-
   
 }

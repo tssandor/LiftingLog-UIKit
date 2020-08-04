@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		19023AA424D81B4900D6EBD6 /* NewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19023AA324D81B4900D6EBD6 /* NewExerciseViewController.swift */; };
-		192CC42624D8F9390095B3B4 /* NewExerciseViewExerciseListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192CC42524D8F9390095B3B4 /* NewExerciseViewExerciseListCell.swift */; };
 		192CC42824D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192CC42724D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift */; };
 		193DEC1724D16C5F00E5B49A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC1624D16C5F00E5B49A /* AppDelegate.swift */; };
 		193DEC1924D16C5F00E5B49A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC1824D16C5F00E5B49A /* SceneDelegate.swift */; };
@@ -28,7 +27,6 @@
 
 /* Begin PBXFileReference section */
 		19023AA324D81B4900D6EBD6 /* NewExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewController.swift; sourceTree = "<group>"; };
-		192CC42524D8F9390095B3B4 /* NewExerciseViewExerciseListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewExerciseListCell.swift; sourceTree = "<group>"; };
 		192CC42724D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewPerformedExercisesCell.swift; sourceTree = "<group>"; };
 		193DEC1324D16C5F00E5B49A /* LiftingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		193DEC1624D16C5F00E5B49A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 				193DEC3324D17C4300E5B49A /* NewWorkoutTableViewCell.swift */,
 				19023AA324D81B4900D6EBD6 /* NewExerciseViewController.swift */,
 				192CC42724D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift */,
-				192CC42524D8F9390095B3B4 /* NewExerciseViewExerciseListCell.swift */,
 				1969F4FA24D3EE2B00CCB3A6 /* WorkoutDetailViewController.swift */,
 				1969F4FC24D3EE4F00CCB3A6 /* WorkoutDetailTableViewCell.swift */,
 				193DEC2224D16C6300E5B49A /* Assets.xcassets */,
@@ -182,7 +179,6 @@
 				192CC42824D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift in Sources */,
 				193DEC3224D16E3100E5B49A /* SetupExerciseDB.swift in Sources */,
 				19D3CA0024D3B55600C5FF70 /* WorkoutsListTableViewCell.swift in Sources */,
-				192CC42624D8F9390095B3B4 /* NewExerciseViewExerciseListCell.swift in Sources */,
 				193DEC1924D16C5F00E5B49A /* SceneDelegate.swift in Sources */,
 				19023AA424D81B4900D6EBD6 /* NewExerciseViewController.swift in Sources */,
 			);

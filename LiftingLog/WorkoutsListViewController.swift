@@ -32,9 +32,11 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
       workoutsTableView.isHidden = true
       noWorkoutsLabel.isHidden = false
     } else {
-      // We need this reload so it's updated when we come back from adding a new workout
-      workoutsTableView.reloadData()
+      workoutsTableView.isHidden = false
+      noWorkoutsLabel.isHidden = true
     }
+    // We need this reload so it's updated when we come back from adding a new workout
+    workoutsTableView.reloadData()
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,31 +53,41 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
     cell.workoutDateLabel.text = dateFormatter.string(from: workouts[indexPath.row].dateTime)
     
-    var detailsText: String
-    switch workouts[indexPath.row].exerciseGroupsInWorkout.count {
-    case 0:
-      detailsText = "No details for this workout"
-    case 1:
-      detailsText = workouts[indexPath.row].exerciseGroupsInWorkout[0].exerciseType.exerciseName
-    case 2:
-      detailsText = workouts[indexPath.row].exerciseGroupsInWorkout[0].exerciseType.exerciseName
-      detailsText = detailsText + ", "
-      detailsText = detailsText + workouts[indexPath.row].exerciseGroupsInWorkout[1].exerciseType.exerciseName
-    default:
-      detailsText = workouts[indexPath.row].exerciseGroupsInWorkout[0].exerciseType.exerciseName
-      detailsText = detailsText + ", "
-      detailsText = detailsText + workouts[indexPath.row].exerciseGroupsInWorkout[1].exerciseType.exerciseName
-      detailsText = detailsText + ", and \(workouts[indexPath.row].exerciseGroupsInWorkout.count - 2) more exercises"
+    var totalWeight: Float = 0
+    for oneExerciseGroup in workouts[indexPath.row].exerciseGroupsInWorkout {
+      for oneExercise in oneExerciseGroup.exercises {
+        totalWeight = totalWeight + Float(oneExercise.sets * oneExercise.reps) * oneExercise.weight
+      }
     }
     
-    cell.workoutDetailsLabel.text = detailsText
-      
+//    var detailsText: String
+//    switch workouts[indexPath.row].exerciseGroupsInWorkout.count {
+//    case 0:
+//      detailsText = "No details for this workout"
+//    case 1:
+//      detailsText = workouts[indexPath.row].exerciseGroupsInWorkout[0].exerciseType.exerciseName
+//    case 2:
+//      detailsText = workouts[indexPath.row].exerciseGroupsInWorkout[0].exerciseType.exerciseName
+//      detailsText = detailsText + ", "
+//      detailsText = detailsText + workouts[indexPath.row].exerciseGroupsInWorkout[1].exerciseType.exerciseName
+//    default:
+//      detailsText = workouts[indexPath.row].exerciseGroupsInWorkout[0].exerciseType.exerciseName
+//      detailsText = detailsText + ", "
+//      detailsText = detailsText + workouts[indexPath.row].exerciseGroupsInWorkout[1].exerciseType.exerciseName
+//      detailsText = detailsText + ", and \(workouts[indexPath.row].exerciseGroupsInWorkout.count - 2) more exercises"
+//    }
+    
+    cell.workoutDetailsLabel.text = "Total weight moved: \(totalWeight)" + weightUnit
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     selectedWorkout = workouts[indexPath.row]
     performSegue(withIdentifier: "WorkoutDetailSegue", sender: nil)
+  }
+  
+  @IBAction func pressedAddNewWorkout(_ sender: Any) {
+    performSegue(withIdentifier: "AddNewWorkoutSegue", sender: nil)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,24 +97,4 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     }
   }
   
-  @IBAction func pressedAddNewWorkout(_ sender: Any) {
-//    tableView.isHidden = false
-//    noWorkoutsLabel.isHidden = true
-//    workouts.reverse()
-//    workouts.append(currentWorkout)
-//    workouts.reverse()
-//    self.tableView.reloadData()
-    performSegue(withIdentifier: "AddNewWorkoutSegue", sender: nil)
-  }
-  
-  /*
-  // MARK: - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destination.
-      // Pass the selected object to the new view controller.
-  }
-  */
-
 }

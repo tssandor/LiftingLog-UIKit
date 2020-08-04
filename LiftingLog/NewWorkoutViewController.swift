@@ -27,8 +27,6 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     super.viewDidLoad()
     self.title = "New Workout #\(workouts.count+1)"
     self.tableView.separatorStyle = .none
-//    setupExerciseDB()
-//    addDummyExercises()
     newWorkout.exerciseGroupsInWorkout.reverse()
     saveButton.isEnabled = false
   }
@@ -37,12 +35,10 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     if newWorkout.exerciseGroupsInWorkout.count == 0 {
       self.tableView.isHidden = true
       self.noExercisesLabel.isHidden = false
-//      print("none")
     } else {
       self.tableView.isHidden = false
       self.noExercisesLabel.isHidden = true
       self.tableView.reloadData()
-//      print(newWorkout)
     }
   }
   
@@ -76,22 +72,6 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     // This is important for passing data back to here later
     goNext.delegate = self
     self.navigationController?.pushViewController(goNext, animated: true)
-//    performSegue(withIdentifier: "AddNewExerciseSegue", sender: nil)
-//    self.tableView.isHidden = false
-//    self.noExercisesLabel.isHidden = true
-//    newWorkout.exerciseGroupsInWorkout.reverse()
-//    newWorkout.exerciseGroupsInWorkout.append(
-//       ExerciseGroup(
-//         exerciseType: ExerciseType(exerciseName: "Appended", exerciseCategory: "Barbell"),
-//         exercises:
-//           [Exercise(sets: 3, reps: 5, weight: 110),
-//            Exercise(sets: 2, reps: 5, weight: 120),
-//            Exercise(sets: 3, reps: 5, weight: 110),
-//            Exercise(sets: 2, reps: 5, weight: 120)]
-//       )
-//     )
-//    newWorkout.exerciseGroupsInWorkout.reverse()
-//    self.tableView.reloadData()
   }
 
   @IBAction func pressedCancelButton(_ sender: Any) {
@@ -109,44 +89,13 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
     }
-//    If you pushed the viewController you use self.navigationController?.popViewController(animated: true)
-//
-//    If you presented it modally you use self.dismiss(self, animated: true)
-//
-//    When its presented from a modal segue you use self.presentingViewController?.dismiss(animated: true, completion: nil)
   }
   
   @IBAction func pressedSaveButton(_ sender: Any) {
     workouts.reverse()
     workouts.append(newWorkout)
     workouts.reverse()
+    print(workouts)
     self.navigationController?.popViewController(animated: true)
   }
 }
-
-
-//
-//extension String {
-//    enum TruncationPosition {
-//        case head
-//        case middle
-//        case tail
-//    }
-//
-//    func truncated(limit: Int, position: TruncationPosition = .tail, leader: String = "...") -> String {
-//        guard self.count > limit else { return self }
-//
-//        switch position {
-//        case .head:
-//            return leader + self.suffix(limit)
-//        case .middle:
-//            let headCharactersCount = Int(ceil(Float(limit - leader.count) / 2.0))
-//
-//            let tailCharactersCount = Int(floor(Float(limit - leader.count) / 2.0))
-//            
-//            return "\(self.prefix(headCharactersCount))\(leader)\(self.suffix(tailCharactersCount))"
-//        case .tail:
-//            return self.prefix(limit) + leader
-//        }
-//    }
-//}
