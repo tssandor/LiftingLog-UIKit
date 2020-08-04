@@ -104,10 +104,15 @@
                                 <action selector="pressedCancelButton:" destination="BYZ-38-t0r" id="O1w-Pi-Rk9"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="q84-B9-pNR"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="q84-B9-pNR">
+                            <connections>
+                                <action selector="pressedSaveButton:" destination="BYZ-38-t0r" id="IQu-HO-vLp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="noExercisesLabel" destination="HFi-Re-RxP" id="Nvi-fm-ZWK"/>
+                        <outlet property="saveButton" destination="q84-B9-pNR" id="fqo-e8-seA"/>
                         <outlet property="tableView" destination="Dyl-15-AcU" id="eE0-D1-4gF"/>
                         <segue destination="OUJ-xa-3ee" kind="show" identifier="AddNewExerciseSegue" id="xXC-CT-Nu7"/>
                     </connections>
@@ -248,7 +253,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="currentExerciseTableView" destination="gnP-46-RCM" id="KWL-dm-B7w"/>
                         <outlet property="performedExercisesTableView" destination="gnP-46-RCM" id="lqd-Ji-cLm"/>
+                        <outlet property="saveButton" destination="YTS-8l-vXI" id="5L4-df-wIZ"/>
                         <outlet property="setRepWeightPicker" destination="mWx-g0-dCd" id="Xfn-7G-SEo"/>
                         <outlet property="setRepWeightSubview" destination="5TV-hf-cot" id="Fea-hT-42d"/>
                     </connections>
@@ -359,7 +366,7 @@
                     <navigationItem key="navigationItem" id="Tnl-u2-qWK"/>
                     <connections>
                         <outlet property="noWorkoutsLabel" destination="Tof-m1-vQ3" id="Xv3-xW-DWz"/>
-                        <outlet property="tableView" destination="zU9-dj-AIW" id="P86-Ua-AnC"/>
+                        <outlet property="workoutsTableView" destination="zU9-dj-AIW" id="P86-Ua-AnC"/>
                         <segue destination="jFm-DT-Nmg" kind="show" identifier="WorkoutDetailSegue" id="LdV-IY-WMZ"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="AddNewWorkoutSegue" id="OxT-cb-w89"/>
                     </connections>

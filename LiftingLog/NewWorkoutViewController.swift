@@ -11,12 +11,15 @@ import UIKit
 class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChildViewControllerDelegate {
  
   func childViewControllerResponse(newlyAddedExerciseGroup: ExerciseGroup) {
-    print(newlyAddedExerciseGroup)
+    newWorkout.exerciseGroupsInWorkout.reverse()
     newWorkout.exerciseGroupsInWorkout.append(newlyAddedExerciseGroup)
+    newWorkout.exerciseGroupsInWorkout.reverse()
+    saveButton.isEnabled = true
   }
   
   @IBOutlet var tableView: UITableView!
   @IBOutlet weak var noExercisesLabel: UILabel!
+  @IBOutlet weak var saveButton: UIBarButtonItem!
   
   var newWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
 
@@ -27,18 +30,19 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
 //    setupExerciseDB()
 //    addDummyExercises()
     newWorkout.exerciseGroupsInWorkout.reverse()
+    saveButton.isEnabled = false
   }
   
   override func viewWillAppear(_ animated: Bool) {
     if newWorkout.exerciseGroupsInWorkout.count == 0 {
       self.tableView.isHidden = true
       self.noExercisesLabel.isHidden = false
-      print("none")
+//      print("none")
     } else {
       self.tableView.isHidden = false
       self.noExercisesLabel.isHidden = true
       self.tableView.reloadData()
-      print(newWorkout)
+//      print(newWorkout)
     }
   }
   
@@ -57,9 +61,9 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     for i in 0...newWorkout.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
       let sets = newWorkout.exerciseGroupsInWorkout[indexPath.row].exercises[i]
       if i == newWorkout.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
-        setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)")
+        setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)" + weightUnit)
       } else {
-        setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)\n")
+        setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)" + weightUnit + "\n")
       }
     }
     cell.setsMultilineLabel.text = setsDetails
@@ -69,6 +73,7 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   
   @IBAction func pressedAddNewExerciseButton(_ sender: Any) {
     let goNext = storyboard!.instantiateViewController(withIdentifier: "NewExerciseVewController") as! NewExerciseViewController
+    // This is important for passing data back to here later
     goNext.delegate = self
     self.navigationController?.pushViewController(goNext, animated: true)
 //    performSegue(withIdentifier: "AddNewExerciseSegue", sender: nil)
@@ -111,6 +116,12 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
 //    When its presented from a modal segue you use self.presentingViewController?.dismiss(animated: true, completion: nil)
   }
   
+  @IBAction func pressedSaveButton(_ sender: Any) {
+    workouts.reverse()
+    workouts.append(newWorkout)
+    workouts.reverse()
+    self.navigationController?.popViewController(animated: true)
+  }
 }
 
 

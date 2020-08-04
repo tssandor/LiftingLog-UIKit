@@ -50,9 +50,9 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     for i in 0...workoutDisplayed.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
       let sets = workoutDisplayed.exerciseGroupsInWorkout[indexPath.row].exercises[i]
       if i == workoutDisplayed.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
-        setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)")
+        setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)" + weightUnit)
       } else {
-        setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)\n")
+        setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)" + weightUnit + "\n")
       }
     }
     cell.setsMultilineLabel.text = setsDetails

@@ -24,6 +24,23 @@ func setupExerciseDB() {
   exerciseTypeDB.append(ExerciseType(exerciseName: "Arnold Press", exerciseCategory: "Dumbbell"))
 }
 
+var weightUnit: String = "kg"
+
+var setsFor: [String:[Int]] = [
+    "Barbell" :    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    "Dumbbell" :   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+]
+
+var repsFor: [String:[Int]] = [
+    "Barbell" :    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    "Dumbbell" :   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+]
+
+var weightsFor: [String:[Float]] = [
+    "Barbell" :    [20, 22.5, 25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5, 50, 52.5, 55, 57.5, 60, 62.5, 65, 333.5],
+    "Dumbbell" :   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+]
+
 func addDummyExercises() {
   currentWorkout.dateTime = Date(timeIntervalSince1970: 1596034562)
   

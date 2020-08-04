@@ -10,17 +10,17 @@ import UIKit
 
 class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-  @IBOutlet var tableView: UITableView!
+  @IBOutlet var workoutsTableView: UITableView!
   @IBOutlet weak var noWorkoutsLabel: UILabel!
   
   var selectedWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.tableView.separatorStyle = .none
+    self.workoutsTableView.separatorStyle = .none
     self.title = "LiftingLog"
     self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
-    self.tableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    self.workoutsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     setupExerciseDB()
     addDummyExercises()
     workouts.reverse()
@@ -29,8 +29,11 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   
   override func viewWillAppear(_ animated: Bool) {
     if workouts.count == 0 {
-      tableView.isHidden = true
+      workoutsTableView.isHidden = true
       noWorkoutsLabel.isHidden = false
+    } else {
+      // We need this reload so it's updated when we come back from adding a new workout
+      workoutsTableView.reloadData()
     }
   }
   

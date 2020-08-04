@@ -8,8 +8,6 @@
 
 import Foundation
 
-var weightUnit: String = "kg"
-
 //enum Equipment {
 //  case dumbbell
 //  case barbell
@@ -32,7 +30,7 @@ struct Exercise {
 
 struct ExerciseGroup {
   let exerciseType: ExerciseType
-  let exercises: [Exercise]
+  var exercises: [Exercise]
 }
 
 struct Workout {
