@@ -10,18 +10,15 @@ import UIKit
 
 class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate {
   
-  @IBOutlet weak var setsButton: UIButton!
-  @IBOutlet weak var repsButton: UIButton!
-  @IBOutlet weak var weightButton: UIButton!
-  @IBOutlet weak var exerciseListTableView: UITableView!
+//  @IBOutlet weak var setsButton: UIButton!
+//  @IBOutlet weak var repsButton: UIButton!
+//  @IBOutlet weak var weightButton: UIButton!
+//  @IBOutlet weak var exerciseListTableView: UITableView!
   @IBOutlet weak var performedExercisesTableView: UITableView!
-
+  @IBOutlet weak var setRepWeightPicker: UIPickerView!
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if tableView == exerciseListTableView {
-      return 20
-    } else {
-      return 100
-    }
+    return 40
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,17 +31,9 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
 //      performedExercisesListCell.performedExerciseListLabel.text = "second one"
 //      return performedExercisesListCell
 //    }
-    if tableView == performedExercisesTableView {
-      let performedExercisesListCell = tableView.dequeueReusableCell(withIdentifier: "PerformedExercisesListCell", for: indexPath) as! NewExerciseViewPerformedExercisesCell
-      performedExercisesListCell.performedExerciseListLabel.text = "second one"
-      return performedExercisesListCell
-    } else {
-      let exerciseListCell = tableView.dequeueReusableCell(withIdentifier: "ExerciseListCell", for: indexPath) as! NewExerciseViewExerciseListCell
-      exerciseListCell.exerciseListLabel.text = "first one"
-      return exerciseListCell
-
-    }
-
+    let performedExercisesListCell = tableView.dequeueReusableCell(withIdentifier: "PerformedExercisesListCell", for: indexPath) as! NewExerciseViewPerformedExercisesCell
+    performedExercisesListCell.performedExerciseListLabel.text = "This is an exercise"
+    return performedExercisesListCell
   }
   
   
@@ -56,27 +45,18 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
 
     
     
-    let picker = UIPickerView()
-    picker.translatesAutoresizingMaskIntoConstraints = false
-    view.addSubview(picker)
-
-    picker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-    picker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-    picker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+//    let picker = UIPickerView()
+//    picker.translatesAutoresizingMaskIntoConstraints = false
+//    view.addSubview(picker)
+//
+//    picker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+//    picker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+//    picker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
         // Do any additional setup after loading the view.
     }
     
-  @IBAction func pressedAddCustomExercise(_ sender: Any) {
-  }
-  
-  @IBAction func pressedSetsButton(_ sender: Any) {
-  }
-  
-  @IBAction func pressedRepsButton(_ sender: Any) {
-  }
-  
-  @IBAction func pressedWeightButton(_ sender: Any) {
+  @IBAction func pressedSelectExercise(_ sender: Any) {
   }
   
   @IBAction func pressedAddExerciseButton(_ sender: Any) {
@@ -93,6 +73,10 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   @IBAction func pressedDiscardButton(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
+  
+  @IBAction func pressedSaveButton(_ sender: Any) {
+  }
+  
   /*
    
     // MARK: - Navigation
