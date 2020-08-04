@@ -11,6 +11,7 @@ import UIKit
 class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   @IBOutlet var tableView: UITableView!
+  @IBOutlet weak var noExercisesLabel: UILabel!
   
   var newWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
 
@@ -20,26 +21,34 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     self.tableView.separatorStyle = .none
 //    setupExerciseDB()
 //    addDummyExercises()
-    currentWorkout.exerciseGroupsInWorkout.reverse()
+    newWorkout.exerciseGroupsInWorkout.reverse()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    if newWorkout.exerciseGroupsInWorkout.count == 0 {
+      self.tableView.isHidden = true
+      self.noExercisesLabel.isHidden = false
+    } else {
+      self.tableView.isHidden = false
+      self.noExercisesLabel.isHidden = true
+    }
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//    tableView.rowHeight = UITableView.automaticDimension
-//    tableView.estimatedRowHeight = 600
-    return currentWorkout.exerciseGroupsInWorkout.count
+    return newWorkout.exerciseGroupsInWorkout.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseGroupCell", for: indexPath) as! NewWorkoutView_ExerciseGroupTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseGroupCell", for: indexPath) as! NewWorkoutTableViewCell
 
-    cell.exerciseCategoryLabel.text = currentWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseCategory
-    cell.exerciseNameLabel.text = currentWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseName
+    cell.exerciseCategoryLabel.text = newWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseCategory
+    cell.exerciseNameLabel.text = newWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseName
 
     var setsDetails: String = ""
     
-    for i in 0...currentWorkout.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
-      let sets = currentWorkout.exerciseGroupsInWorkout[indexPath.row].exercises[i]
-      if i == currentWorkout.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
+    for i in 0...newWorkout.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
+      let sets = newWorkout.exerciseGroupsInWorkout[indexPath.row].exercises[i]
+      if i == newWorkout.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
         setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)")
       } else {
         setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)\n")
@@ -51,19 +60,22 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   }
   
   @IBAction func buttonPressed(_ sender: Any) {
-    currentWorkout.exerciseGroupsInWorkout.reverse()
-    currentWorkout.exerciseGroupsInWorkout.append(
-       ExerciseGroup(
-         exerciseType: ExerciseType(exerciseName: "Appended", exerciseCategory: "Barbell"),
-         exercises:
-           [Exercise(sets: 3, reps: 5, weight: 110),
-            Exercise(sets: 2, reps: 5, weight: 120),
-            Exercise(sets: 3, reps: 5, weight: 110),
-            Exercise(sets: 2, reps: 5, weight: 120)]
-       )
-     )
-    currentWorkout.exerciseGroupsInWorkout.reverse()
-    self.tableView.reloadData()
+    performSegue(withIdentifier: "AddNewExerciseSegue", sender: nil)
+//    self.tableView.isHidden = false
+//    self.noExercisesLabel.isHidden = true
+//    newWorkout.exerciseGroupsInWorkout.reverse()
+//    newWorkout.exerciseGroupsInWorkout.append(
+//       ExerciseGroup(
+//         exerciseType: ExerciseType(exerciseName: "Appended", exerciseCategory: "Barbell"),
+//         exercises:
+//           [Exercise(sets: 3, reps: 5, weight: 110),
+//            Exercise(sets: 2, reps: 5, weight: 120),
+//            Exercise(sets: 3, reps: 5, weight: 110),
+//            Exercise(sets: 2, reps: 5, weight: 120)]
+//       )
+//     )
+//    newWorkout.exerciseGroupsInWorkout.reverse()
+//    self.tableView.reloadData()
   }
 
   @IBAction func cancelButtonPressed(_ sender: Any) {

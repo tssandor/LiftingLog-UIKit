@@ -1,5 +1,5 @@
 //
-//  ExerciseGroupTableViewCell.swift
+//  NewWorkoutTableViewCell.swift
 //  LiftingLog
 //
 //  Created by TSS on 2020/7/29.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewWorkoutView_ExerciseGroupTableViewCell: UITableViewCell {
+class NewWorkoutTableViewCell: UITableViewCell {
   
   @IBOutlet weak var exerciseCategoryLabel: UILabel!
   @IBOutlet weak var exerciseNameLabel: UILabel!

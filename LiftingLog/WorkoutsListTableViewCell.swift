@@ -1,5 +1,5 @@
 //
-//  WorkoutTableViewCell.swift
+//  WorkoutsListTableViewCell.swift
 //  LiftingLog
 //
 //  Created by TSS on 2020/7/31.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WorkoutTableViewCell: UITableViewCell {
+class WorkoutsListTableViewCell: UITableViewCell {
 
   @IBOutlet weak var workoutNumberLabel: UILabel!
   @IBOutlet weak var workoutDateLabel: UILabel!
