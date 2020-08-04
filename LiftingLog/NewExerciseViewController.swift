@@ -28,7 +28,8 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   @IBOutlet weak var setRepWeightSubview: UIView!
   @IBOutlet weak var saveButton: UIBarButtonItem!
   @IBOutlet weak var currentExerciseTableView: UITableView!
-  
+  @IBOutlet weak var addASetLabel: UILabel!
+
   override func viewDidLoad() {
     super.viewDidLoad()
     setupSetRepWeightPickerData(forType: "Barbell")
@@ -37,6 +38,16 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     selectedSets = setsFor["Barbell"]![0]
     selectedReps = repsFor["Barbell"]![0]
     selectedWeight = weightsFor["Barbell"]![0]
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    if currentExerciseGroup.exercises.count == 0 {
+      currentExerciseTableView.isHidden = true
+      addASetLabel.isHidden = false
+    } else {
+      currentExerciseTableView.isHidden = false
+      addASetLabel.isHidden = true
+    }
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,6 +71,8 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   @IBAction func pressedAddExerciseButton(_ sender: Any) {
     currentExerciseGroup.exercises.append(Exercise(sets: selectedSets, reps: selectedReps, weight: selectedWeight))
     saveButton.isEnabled = true
+    currentExerciseTableView.isHidden = false
+    addASetLabel.isHidden = true
     currentExerciseTableView.reloadData()
   }
 

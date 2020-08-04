@@ -22,9 +22,10 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     self.workoutsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     setupExerciseDB()
-    addDummyExercises()
+//    addDummyExercises()
     workouts.reverse()
-    noWorkoutsLabel.isHidden = true
+//    noWorkoutsLabel.isHidden = true
+//    self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.png")!)
   }
   
   override func viewWillAppear(_ animated: Bool) {

@@ -84,7 +84,6 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         alertController.addAction(OKAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
-          print("Cancel button tapped");
         }
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
@@ -95,7 +94,6 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     workouts.reverse()
     workouts.append(newWorkout)
     workouts.reverse()
-    print(workouts)
     self.navigationController?.popViewController(animated: true)
   }
 }
