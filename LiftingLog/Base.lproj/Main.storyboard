@@ -135,32 +135,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dm-Vn-C0b">
-                                <rect key="frame" x="151.5" y="104" width="111.5" height="20"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <rect key="frame" x="162" y="104" width="90.5" height="20.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgK-kw-v95">
-                                <rect key="frame" x="186.5" y="454" width="41" height="30"/>
-                                <state key="normal" title="Add +"/>
+                                <rect key="frame" x="132.5" y="462.5" width="149" height="37"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="   Add these sets   "/>
                                 <connections>
                                     <action selector="pressedAddExerciseButton:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="rDd-fd-pRD"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gnP-46-RCM">
-                                <rect key="frame" x="0.0" y="500" width="414" height="396"/>
+                                <rect key="frame" x="0.0" y="515.5" width="414" height="380.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PerformedExercisesListCell" id="yN7-wF-eM5" customClass="NewExerciseViewPerformedExercisesCell" customModule="LiftingLog" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="47.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yN7-wF-eM5" id="Xo4-Nr-SKu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APz-EY-KPz">
-                                                    <rect key="frame" x="20" y="11" width="374" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="25.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -183,20 +186,23 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deadlift (barbell)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OV-FC-kCk">
-                                <rect key="frame" x="109" y="132" width="196" height="28"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
+                                <rect key="frame" x="113.5" y="128.5" width="187.5" height="33"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1b-cl-irG">
-                                <rect key="frame" x="155" y="176" width="104" height="30"/>
-                                <state key="normal" title="Select exercise"/>
+                                <rect key="frame" x="131.5" y="177.5" width="151" height="37"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="   Select exercise   "/>
                                 <connections>
                                     <action selector="pressedSelectExercise:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="ktM-9k-0IH"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TV-hf-cot">
-                                <rect key="frame" x="24" y="206" width="366" height="240"/>
+                                <rect key="frame" x="24" y="214.5" width="366" height="240"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWx-g0-dCd">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="216"/>
@@ -234,7 +240,7 @@
                         <constraints>
                             <constraint firstItem="6Dm-Vn-C0b" firstAttribute="top" secondItem="y9v-cq-rXV" secondAttribute="top" constant="16" id="1eB-ra-nZG"/>
                             <constraint firstItem="y9v-cq-rXV" firstAttribute="trailing" secondItem="gnP-46-RCM" secondAttribute="trailing" id="3CG-GX-5ZD"/>
-                            <constraint firstItem="0OV-FC-kCk" firstAttribute="top" secondItem="6Dm-Vn-C0b" secondAttribute="bottom" constant="8" id="3uN-e9-hZz"/>
+                            <constraint firstItem="0OV-FC-kCk" firstAttribute="top" secondItem="6Dm-Vn-C0b" secondAttribute="bottom" constant="4" id="3uN-e9-hZz"/>
                             <constraint firstItem="y9v-cq-rXV" firstAttribute="trailing" secondItem="5TV-hf-cot" secondAttribute="trailing" constant="24" id="4Ed-cH-A6v"/>
                             <constraint firstItem="gnP-46-RCM" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" id="9Lm-WA-Ox9"/>
                             <constraint firstItem="Ucr-x8-U8R" firstAttribute="leading" secondItem="FHF-CK-Ifa" secondAttribute="leading" constant="8" id="Dzc-EZ-hGQ"/>

@@ -38,6 +38,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     selectedSets = setsFor["Barbell"]![0]
     selectedReps = repsFor["Barbell"]![0]
     selectedWeight = weightsFor["Barbell"]![0]
+    self.performedExercisesTableView.separatorStyle = .none
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +60,20 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     performedExercisesListCell.performedExerciseListLabel.text =
       "\(currentExerciseGroup.exercises[indexPath.row].sets) x \(currentExerciseGroup.exercises[indexPath.row].reps) x \(currentExerciseGroup.exercises[indexPath.row].weight)" + weightUnit
     return performedExercisesListCell
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      currentExerciseGroup.exercises.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+      if currentExerciseGroup.exercises.count == 0 {
+        currentExerciseTableView.isHidden = true
+        addASetLabel.isHidden = false
+        saveButton.isEnabled = false
+      }
+    } else if editingStyle == .insert {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
   }
     
   @IBAction func pressedSelectExercise(_ sender: Any) {
