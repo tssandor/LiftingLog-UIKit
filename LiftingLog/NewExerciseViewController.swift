@@ -25,7 +25,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   
   @IBOutlet weak var performedExercisesTableView: UITableView!
   @IBOutlet weak var setRepWeightPicker: UIPickerView!
-  @IBOutlet weak var setRepWeightSubview: UIView!
+//  @IBOutlet weak var setRepWeightSubview: UIView!
   @IBOutlet weak var saveButton: UIBarButtonItem!
   @IBOutlet weak var currentExerciseTableView: UITableView!
   @IBOutlet weak var addASetLabel: UILabel!
@@ -33,10 +33,10 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   override func viewDidLoad() {
     super.viewDidLoad()
     setupSetRepWeightPickerData(forType: "Barbell")
-    setRepWeightSubview.isHidden = true
+//    setRepWeightSubview.isHidden = true
     saveButton.isEnabled = false
-    selectedSets = setsFor["Barbell"]![0]
-    selectedReps = repsFor["Barbell"]![0]
+    selectedSets = setsFor["Barbell"]![4]
+    selectedReps = repsFor["Barbell"]![4]
     selectedWeight = weightsFor["Barbell"]![0]
     self.performedExercisesTableView.separatorStyle = .none
   }
@@ -49,6 +49,8 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
       currentExerciseTableView.isHidden = false
       addASetLabel.isHidden = true
     }
+    setRepWeightPicker.selectRow(4, inComponent: 0, animated: false)
+    setRepWeightPicker.selectRow(4, inComponent: 1, animated: false)
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,7 +82,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     // This is just for reference, will change completely
     setupSetRepWeightPickerData(forType: "Barbell")
     setRepWeightPicker.reloadAllComponents()
-    setRepWeightSubview.isHidden = false
+//    setRepWeightSubview.isHidden = false
   }
   
   @IBAction func pressedAddExerciseButton(_ sender: Any) {
