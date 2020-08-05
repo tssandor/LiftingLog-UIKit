@@ -21,6 +21,10 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   var selectedSets: Int = 0
   var selectedReps: Int = 0
   var selectedWeight: Float = 0
+  var selectedExercise: String = ""
+//  var activeDropdownEmoji: String = "     ↘️     "
+//  var inactiveDropdownEmoji: String = "     ➡️     "
+  var pickerShowsExercises: Bool = true
   var currentExerciseGroup: ExerciseGroup = ExerciseGroup(exerciseType: ExerciseType(exerciseName: "Deadlift (Barbell)", exerciseCategory: "Barbell"), exercises: [])
   
   @IBOutlet weak var performedExercisesTableView: UITableView!
@@ -29,16 +33,26 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   @IBOutlet weak var saveButton: UIBarButtonItem!
   @IBOutlet weak var currentExerciseTableView: UITableView!
   @IBOutlet weak var addASetLabel: UILabel!
-
+  @IBOutlet weak var selectExerciseTypeButton: UIButton!
+  @IBOutlet weak var selectSetRepWeightButton: UIButton!
+  @IBOutlet weak var exerciseLabel: UILabel!
+  @IBOutlet weak var setRepWeightLabel: UILabel!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupSetRepWeightPickerData(forType: "Barbell")
-//    setRepWeightSubview.isHidden = true
     saveButton.isEnabled = false
     selectedSets = setsFor["Barbell"]![4]
     selectedReps = repsFor["Barbell"]![4]
     selectedWeight = weightsFor["Barbell"]![0]
     self.performedExercisesTableView.separatorStyle = .none
+    self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    // need to reorg these to functions
+    selectExerciseTypeButton.isEnabled = false
+    selectExerciseTypeButton.backgroundColor = .lightGray
+    selectSetRepWeightButton.isEnabled = true
+    selectSetRepWeightButton.backgroundColor = .systemGreen
+//    print(exerciseTypeDB)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +63,12 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
       currentExerciseTableView.isHidden = false
       addASetLabel.isHidden = true
     }
-    setRepWeightPicker.selectRow(4, inComponent: 0, animated: false)
-    setRepWeightPicker.selectRow(4, inComponent: 1, animated: false)
+    if pickerShowsExercises {
+      
+    } else {
+      setRepWeightPicker.selectRow(4, inComponent: 0, animated: false)
+      setRepWeightPicker.selectRow(4, inComponent: 1, animated: false)
+    }
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,10 +97,34 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   }
     
   @IBAction func pressedSelectExercise(_ sender: Any) {
+    selectExerciseTypeButton.isEnabled = false
+    selectExerciseTypeButton.backgroundColor = .lightGray
+    selectSetRepWeightButton.isEnabled = true
+    selectSetRepWeightButton.backgroundColor = .systemGreen
+    pickerShowsExercises = true
+    // reloadPicker(pickerShowsExercises)
+//    setRepWeightPicker.reloadAllComponents()
+    
     // This is just for reference, will change completely
     setupSetRepWeightPickerData(forType: "Barbell")
     setRepWeightPicker.reloadAllComponents()
 //    setRepWeightSubview.isHidden = false
+  }
+  
+  @IBAction func pressedSelectSetRepWeight(_ sender: Any) {
+    selectExerciseTypeButton.isEnabled = true
+    selectExerciseTypeButton.backgroundColor = .systemGreen
+    selectSetRepWeightButton.isEnabled = false
+    selectSetRepWeightButton.backgroundColor = .lightGray
+    pickerShowsExercises = false
+    setRepWeightPicker.reloadAllComponents()
+    if setRepWeightLabel.text == "not set" {
+      setRepWeightLabel.text = "\(selectedSets) x \(selectedReps) x \(selectedWeight)" + weightUnit
+      setRepWeightPicker.selectRow(4, inComponent: 0, animated: false)
+      setRepWeightPicker.selectRow(4, inComponent: 1, animated: false)
+    }
+    setRepWeightPicker.reloadAllComponents()
+    // reloadPicker(pickerShowsExercises)
   }
   
   @IBAction func pressedAddExerciseButton(_ sender: Any) {
@@ -102,36 +144,56 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     self.navigationController?.popViewController(animated: true)
   }
   
-  @IBAction func pressedDoneOnSetRepWeight(_ sender: Any) {
-//    setRepWeightSubview.isHidden = true
-  }
-  
   // **********************************
   // PICKERVIEW METHODS
   // **********************************
   
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 3
+    if pickerShowsExercises {
+      return 1
+    } else {
+      return 3
+    }
   }
   
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return setRepWeightStringsForPicker[component].count
+    if pickerShowsExercises {
+//      print(exerciseTypeDB.count)
+      return exerciseTypeDB.count
+    } else {
+      return setRepWeightStringsForPicker[component].count
+    }
   }
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return setRepWeightStringsForPicker[component][row]
+    if pickerShowsExercises {
+//      print(exerciseTypeDB[0].exerciseName)
+//      print(exerciseTypeDB[1].exerciseName)
+//      print(exerciseTypeDB[2].exerciseName)
+//      print(exerciseTypeDB[3].exerciseName)
+//      print(exerciseTypeDB[4].exerciseName)
+//      print(exerciseTypeDB[5].exerciseName)
+      return exerciseTypeDB[row].exerciseName
+    } else {
+      return setRepWeightStringsForPicker[component][row]
+    }
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    switch component {
-    case 0:
-      selectedSets = setsFor["Barbell"]![row]
-    case 1:
-      selectedReps = repsFor["Barbell"]![row]
-    case 2:
-      selectedWeight = weightsFor["Barbell"]![row]
-    default:
-      print("something went horribly wrong :]")
+    if pickerShowsExercises {
+      exerciseLabel.text = exerciseTypeDB[row].exerciseName
+    } else {
+      switch component {
+      case 0:
+        selectedSets = setsFor["Barbell"]![row]
+      case 1:
+        selectedReps = repsFor["Barbell"]![row]
+      case 2:
+        selectedWeight = weightsFor["Barbell"]![row]
+      default:
+        print("something went horribly wrong :]")
+      }
+      setRepWeightLabel.text = "\(selectedSets) x \(selectedReps) x \(selectedWeight)" + weightUnit
     }
   }
 
