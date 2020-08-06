@@ -16,6 +16,7 @@ var exerciseTypeDB: [ExerciseType] = []
 var workouts: [Workout] = []
 
 func setupExerciseDB() {
+//  exerciseTypeDB.append(ExerciseType(exerciseName: "-- SELECT EXERCISE --", exerciseCategory: "Barbell"))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Bench Press", exerciseCategory: "Barbell"))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Bent Over Row (Barbell)", exerciseCategory: "Barbell"))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Bent Over Row (Dumbbell)", exerciseCategory: "Dumbbell"))

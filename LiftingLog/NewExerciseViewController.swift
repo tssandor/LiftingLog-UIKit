@@ -27,6 +27,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   var selectedExerciseArrayIndex: Int = 0
   var selectedExercise: String = ""
   var pickerShowsExercises: Bool = true
+  var exerciseTypeAlreadySet: Bool = false
   var currentExerciseGroup: ExerciseGroup = ExerciseGroup(exerciseType: ExerciseType(exerciseName: "Deadlift (Barbell)", exerciseCategory: "Barbell"), exercises: [])
   
   @IBOutlet weak var performedExercisesTableView: UITableView!
@@ -53,7 +54,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     // need to reorg these to functions
     selectExerciseTypeButton.isEnabled = false
-    selectExerciseTypeButton.setTitle("🔒", for: .disabled)
+//    selectExerciseTypeButton.setTitle("🔒", for: .disabled)
     selectExerciseTypeButton.backgroundColor = .lightGray
     selectSetRepWeightButton.isEnabled = true
     selectSetRepWeightButton.backgroundColor = .systemGreen
@@ -71,10 +72,10 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
       addASetLabel.isHidden = true
     }
     if pickerShowsExercises {
-      movePickerToInitialPosition()
+      setupNothingSelectedAtPicker()
     } else {
-      universalPicker.selectRow(4, inComponent: 0, animated: false)
-      universalPicker.selectRow(4, inComponent: 1, animated: false)
+//      universalPicker.selectRow(4, inComponent: 0, animated: false)
+//      universalPicker.selectRow(4, inComponent: 1, animated: false)
     }
   }
   
@@ -214,9 +215,25 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     if pickerShowsExercises {
-      return exerciseTypeDB[row].exerciseName
+      if row == 0 {
+        return "-- SELECT EXERCISE --"
+      } else {
+        return exerciseTypeDB[row].exerciseName
+      }
     } else {
-      return setRepWeightStringsForPicker[component][row]
+      if row == 0 {
+        if component == 0 {
+          return "- SELECT SETS -"
+        } else {
+          if component == 1 {
+            return "- SELECT REPS -"
+          } else {
+            return "- SELECT WEIGHT -"
+          }
+        }
+      } else {
+        return setRepWeightStringsForPicker[component][row]
+      }
     }
   }
   
@@ -247,6 +264,9 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     var setsStrings: [String] = []
     var repsStrings: [String] = []
     var weightsStrings: [String] = []
+//    setsStrings.append("not set")
+//    repsStrings.append("not set")
+//    weightsStrings.append("not set")
     for set in sets {
       setsStrings.append("\(set) sets")
     }
@@ -262,21 +282,22 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     setRepWeightStringsForPicker.append(weightsStrings)
   }
   
-  func movePickerToInitialPosition() {
-    // For the exercise type picker, the initial position is "Deadlift (Barbell)" as the most common exercise
+  func setupNothingSelectedAtPicker() {
     if pickerShowsExercises {
-      var whereDeadliftBarbellIs: Int = 0
-      for i in 0...exerciseTypeDB.count {
-        if exerciseTypeDB[i].exerciseName == "Deadlift (Barbell)" {
-          whereDeadliftBarbellIs = i
-          break
-        }
-      }
-      universalPicker.selectRow(whereDeadliftBarbellIs, inComponent: 0, animated: true)
-      exerciseLabel.text = exerciseTypeDB[whereDeadliftBarbellIs].exerciseName
+//      var whereDeadliftBarbellIs: Int = 0
+//      for i in 0...exerciseTypeDB.count {
+//        if exerciseTypeDB[i].exerciseName == "Deadlift (Barbell)" {
+//          whereDeadliftBarbellIs = i
+//          break
+//        }
+//      }
+      universalPicker.selectRow(0, inComponent: 0, animated: true)
+      exerciseLabel.text = "not set"
     } else {
-    // For the SetRepWeight picker, the initial position is 5 sets x 5 reps x lowest weight for the exercise category
-      
+      universalPicker.selectRow(0, inComponent: 0, animated: false)
+      universalPicker.selectRow(0, inComponent: 1, animated: false)
+      universalPicker.selectRow(0, inComponent: 2, animated: false)
+      setRepWeightLabel.text = "not set"
     }
   }
   
