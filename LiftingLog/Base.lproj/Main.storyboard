@@ -147,7 +147,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgK-kw-v95">
-                                <rect key="frame" x="132.5" y="462.5" width="149" height="37"/>
+                                <rect key="frame" x="132.5" y="459" width="149" height="37"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -157,18 +157,18 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gnP-46-RCM">
-                                <rect key="frame" x="0.0" y="515.5" width="414" height="380.5"/>
+                                <rect key="frame" x="0.0" y="512" width="414" height="319"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PerformedExercisesListCell" id="yN7-wF-eM5" customClass="NewExerciseViewPerformedExercisesCell" customModule="LiftingLog" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="50.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yN7-wF-eM5" id="Xo4-Nr-SKu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APz-EY-KPz">
-                                                    <rect key="frame" x="20" y="11" width="374" height="28"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="28.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -204,7 +204,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a set or ten 😎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucr-x8-U8R">
-                                <rect key="frame" x="8" y="722.5" width="398" height="23.5"/>
+                                <rect key="frame" x="8" y="729.5" width="398" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -244,32 +244,44 @@
                                     <action selector="pressedSelectSetRepWeight:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="5QX-sW-yWf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OP-zb-0UX">
+                                <rect key="frame" x="135" y="843" width="144" height="37"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="   Delete all sets   "/>
+                                <connections>
+                                    <action selector="pressedAddExerciseButton:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="EoP-8R-8Rv"/>
+                                    <action selector="pressedDeleteAllSets:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="69D-gI-RXj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Dm-Vn-C0b" firstAttribute="top" secondItem="y9v-cq-rXV" secondAttribute="top" constant="16" id="1eB-ra-nZG"/>
                             <constraint firstItem="y9v-cq-rXV" firstAttribute="trailing" secondItem="gnP-46-RCM" secondAttribute="trailing" id="3CG-GX-5ZD"/>
                             <constraint firstItem="0OV-FC-kCk" firstAttribute="top" secondItem="6Dm-Vn-C0b" secondAttribute="bottom" constant="4" id="3uN-e9-hZz"/>
+                            <constraint firstItem="gnP-46-RCM" firstAttribute="top" secondItem="bgK-kw-v95" secondAttribute="bottom" constant="16" id="47R-Ix-mbx"/>
                             <constraint firstItem="0OV-FC-kCk" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" constant="16" id="5Dh-IQ-VdK"/>
                             <constraint firstItem="gnP-46-RCM" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" id="9Lm-WA-Ox9"/>
                             <constraint firstItem="Jde-hu-qnm" firstAttribute="top" secondItem="0OV-FC-kCk" secondAttribute="bottom" constant="16" id="AOd-DO-eL2"/>
                             <constraint firstItem="V1b-cl-irG" firstAttribute="trailing" secondItem="6fE-uG-wcG" secondAttribute="trailing" id="AjF-7z-yAJ"/>
-                            <constraint firstItem="Ucr-x8-U8R" firstAttribute="leading" secondItem="FHF-CK-Ifa" secondAttribute="leading" constant="8" id="Dzc-EZ-hGQ"/>
                             <constraint firstItem="kQx-R5-poS" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" constant="16" id="ERT-6R-ZKa"/>
+                            <constraint firstItem="y9v-cq-rXV" firstAttribute="trailing" secondItem="mWx-g0-dCd" secondAttribute="trailing" constant="24" id="FyE-54-3KX"/>
                             <constraint firstItem="mWx-g0-dCd" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" constant="24" id="I8g-zm-brP"/>
-                            <constraint firstAttribute="bottom" secondItem="Ucr-x8-U8R" secondAttribute="bottom" constant="150" id="Ivc-6m-HUS"/>
-                            <constraint firstItem="mWx-g0-dCd" firstAttribute="centerX" secondItem="bgK-kw-v95" secondAttribute="centerX" id="J4F-LX-634"/>
-                            <constraint firstItem="gnP-46-RCM" firstAttribute="top" secondItem="bgK-kw-v95" secondAttribute="bottom" constant="16" id="JUM-4b-u4r"/>
-                            <constraint firstAttribute="bottom" secondItem="gnP-46-RCM" secondAttribute="bottom" id="MPO-Z0-VlV"/>
                             <constraint firstItem="Jde-hu-qnm" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" constant="16" id="MiZ-jZ-5Yh"/>
+                            <constraint firstAttribute="bottom" secondItem="6OP-zb-0UX" secondAttribute="bottom" constant="16" id="Tte-hw-nFu"/>
                             <constraint firstItem="bgK-kw-v95" firstAttribute="centerX" secondItem="FHF-CK-Ifa" secondAttribute="centerX" id="XNn-wi-gQY"/>
-                            <constraint firstItem="bgK-kw-v95" firstAttribute="top" secondItem="mWx-g0-dCd" secondAttribute="bottom" constant="19.5" id="ZRM-f1-Xry"/>
+                            <constraint firstItem="bgK-kw-v95" firstAttribute="top" secondItem="mWx-g0-dCd" secondAttribute="bottom" constant="16" id="ZRM-f1-Xry"/>
+                            <constraint firstItem="6OP-zb-0UX" firstAttribute="top" secondItem="gnP-46-RCM" secondAttribute="bottom" constant="12" id="bSQ-Kd-Ucd"/>
                             <constraint firstItem="mWx-g0-dCd" firstAttribute="top" secondItem="kQx-R5-poS" secondAttribute="bottom" constant="8" id="eyy-ts-5aF"/>
                             <constraint firstItem="6fE-uG-wcG" firstAttribute="top" secondItem="Jde-hu-qnm" secondAttribute="top" id="gi7-qK-xGS"/>
+                            <constraint firstItem="6OP-zb-0UX" firstAttribute="centerX" secondItem="FHF-CK-Ifa" secondAttribute="centerX" id="gly-4B-GP9"/>
                             <constraint firstItem="V1b-cl-irG" firstAttribute="leading" secondItem="6fE-uG-wcG" secondAttribute="leading" id="h7W-SC-Q8W"/>
                             <constraint firstItem="6Dm-Vn-C0b" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" constant="16" id="irz-TW-dSr"/>
                             <constraint firstItem="V1b-cl-irG" firstAttribute="top" secondItem="6Dm-Vn-C0b" secondAttribute="top" id="lLE-tK-0TR"/>
                             <constraint firstItem="kQx-R5-poS" firstAttribute="top" secondItem="Jde-hu-qnm" secondAttribute="bottom" constant="4" id="mm1-Zz-PTd"/>
+                            <constraint firstItem="6OP-zb-0UX" firstAttribute="top" secondItem="Ucr-x8-U8R" secondAttribute="bottom" constant="90" id="nbD-bR-afy"/>
                             <constraint firstAttribute="trailing" secondItem="Ucr-x8-U8R" secondAttribute="trailing" constant="8" id="p0w-1F-h3t"/>
                             <constraint firstItem="V1b-cl-irG" firstAttribute="bottom" secondItem="0OV-FC-kCk" secondAttribute="bottom" id="txU-Cb-4YJ"/>
                             <constraint firstItem="Ucr-x8-U8R" firstAttribute="centerX" secondItem="FHF-CK-Ifa" secondAttribute="centerX" id="vQ3-aw-PeF"/>
@@ -293,6 +305,7 @@
                     <connections>
                         <outlet property="addASetLabel" destination="Ucr-x8-U8R" id="x5s-vY-431"/>
                         <outlet property="currentExerciseTableView" destination="gnP-46-RCM" id="KWL-dm-B7w"/>
+                        <outlet property="deleteAllSetsButton" destination="6OP-zb-0UX" id="9yL-jF-gcv"/>
                         <outlet property="exerciseLabel" destination="0OV-FC-kCk" id="Dzj-n1-pwI"/>
                         <outlet property="performedExercisesTableView" destination="gnP-46-RCM" id="lqd-Ji-cLm"/>
                         <outlet property="saveButton" destination="YTS-8l-vXI" id="5L4-df-wIZ"/>

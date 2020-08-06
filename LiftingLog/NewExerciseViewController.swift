@@ -38,9 +38,11 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   @IBOutlet weak var selectSetRepWeightButton: UIButton!
   @IBOutlet weak var exerciseLabel: UILabel!
   @IBOutlet weak var setRepWeightLabel: UILabel!
+  @IBOutlet weak var deleteAllSetsButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.title = "New exercise in workout"
     setupSetRepWeightPickerData(forType: "Barbell")
     saveButton.isEnabled = false
     selectedSets = setsFor["Barbell"]![4]
@@ -54,6 +56,8 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     selectExerciseTypeButton.backgroundColor = .lightGray
     selectSetRepWeightButton.isEnabled = true
     selectSetRepWeightButton.backgroundColor = .systemGreen
+    deleteAllSetsButton.isEnabled = false
+    deleteAllSetsButton.backgroundColor = .lightGray
 //    print(exerciseTypeDB)
   }
   
@@ -156,8 +160,20 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     // Disable the set exercise button as we already have an exercise in the list
     disableSelectExerciseFeature()
+    
+    // Enable the delete all sets button
+    deleteAllSetsButton.isEnabled = true
+    deleteAllSetsButton.backgroundColor = .systemRed
   }
-
+  
+  @IBAction func pressedDeleteAllSets(_ sender: Any) {
+    currentExerciseGroup.exercises = []
+    currentExerciseTableView.isHidden = true
+    addASetLabel.isHidden = false
+    saveButton.isEnabled = false
+    performedExercisesTableView.reloadData()
+  }
+  
   @IBAction func pressedDiscardButton(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
