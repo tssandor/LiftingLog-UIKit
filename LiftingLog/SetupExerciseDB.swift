@@ -16,11 +16,17 @@ var exerciseTypeDB: [ExerciseType] = []
 var workouts: [Workout] = []
 
 func setupExerciseDB() {
-  exerciseTypeDB.append(ExerciseType(exerciseName: "Deadlift", exerciseCategory: "Barbell"))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Bench Press", exerciseCategory: "Barbell"))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Bent Over Row (Barbell)", exerciseCategory: "Barbell"))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Bent Over Row (Dumbbell)", exerciseCategory: "Dumbbell"))
+  exerciseTypeDB.append(ExerciseType(exerciseName: "Deadlift (Barbell)", exerciseCategory: "Barbell"))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Biceps Curl (Dumbbell)", exerciseCategory: "Dumbbell"))
+  exerciseTypeDB.append(ExerciseType(exerciseName: "Dummy 1", exerciseCategory: "Dumbbell"))
+  exerciseTypeDB.append(ExerciseType(exerciseName: "Dummy 2", exerciseCategory: "Dumbbell"))
+  exerciseTypeDB.append(ExerciseType(exerciseName: "Dummy 3", exerciseCategory: "Dumbbell"))
+  exerciseTypeDB.append(ExerciseType(exerciseName: "Dummy 4", exerciseCategory: "Dumbbell"))
+  exerciseTypeDB.append(ExerciseType(exerciseName: "Dummy 5", exerciseCategory: "Dumbbell"))
+  exerciseTypeDB.append(ExerciseType(exerciseName: "Dummy 6", exerciseCategory: "Dumbbell"))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Arnold Press", exerciseCategory: "Dumbbell"))
 }
 

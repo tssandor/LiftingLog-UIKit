@@ -21,14 +21,15 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   var selectedSets: Int = 0
   var selectedReps: Int = 0
   var selectedWeight: Float = 0
+  var selectedSetsArrayIndex: Int = 0
+  var selectedRepsArrayIndex: Int = 0
+  var selectedWeightArrayIndex: Int = 0
   var selectedExercise: String = ""
-//  var activeDropdownEmoji: String = "     ↘️     "
-//  var inactiveDropdownEmoji: String = "     ➡️     "
   var pickerShowsExercises: Bool = true
   var currentExerciseGroup: ExerciseGroup = ExerciseGroup(exerciseType: ExerciseType(exerciseName: "Deadlift (Barbell)", exerciseCategory: "Barbell"), exercises: [])
   
   @IBOutlet weak var performedExercisesTableView: UITableView!
-  @IBOutlet weak var setRepWeightPicker: UIPickerView!
+  @IBOutlet weak var universalPicker: UIPickerView!
 //  @IBOutlet weak var setRepWeightSubview: UIView!
   @IBOutlet weak var saveButton: UIBarButtonItem!
   @IBOutlet weak var currentExerciseTableView: UITableView!
@@ -49,6 +50,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     // need to reorg these to functions
     selectExerciseTypeButton.isEnabled = false
+    selectExerciseTypeButton.setTitle("🔒", for: .disabled)
     selectExerciseTypeButton.backgroundColor = .lightGray
     selectSetRepWeightButton.isEnabled = true
     selectSetRepWeightButton.backgroundColor = .systemGreen
@@ -64,10 +66,10 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
       addASetLabel.isHidden = true
     }
     if pickerShowsExercises {
-      
+      movePickerToInitialPosition()
     } else {
-      setRepWeightPicker.selectRow(4, inComponent: 0, animated: false)
-      setRepWeightPicker.selectRow(4, inComponent: 1, animated: false)
+      universalPicker.selectRow(4, inComponent: 0, animated: false)
+      universalPicker.selectRow(4, inComponent: 1, animated: false)
     }
   }
   
@@ -78,7 +80,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let performedExercisesListCell = tableView.dequeueReusableCell(withIdentifier: "PerformedExercisesListCell", for: indexPath) as! NewExerciseViewPerformedExercisesCell
     performedExercisesListCell.performedExerciseListLabel.text =
-      "\(currentExerciseGroup.exercises[indexPath.row].sets) x \(currentExerciseGroup.exercises[indexPath.row].reps) x \(currentExerciseGroup.exercises[indexPath.row].weight)" + weightUnit
+      "\(currentExerciseGroup.exerciseType.exerciseName) - \(currentExerciseGroup.exercises[indexPath.row].sets) x \(currentExerciseGroup.exercises[indexPath.row].reps) x \(currentExerciseGroup.exercises[indexPath.row].weight)" + weightUnit
     return performedExercisesListCell
   }
   
@@ -86,7 +88,16 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     if editingStyle == .delete {
       currentExerciseGroup.exercises.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .fade)
+      
+      // If there are no more exercises, we need to re-enable the select exercise feature, switch back to the exercise view in the picker, hide the tableview, and disable the Save button
       if currentExerciseGroup.exercises.count == 0 {
+        switchToExerciseListViewInPicker()
+        enableSelectExerciseFeature()
+//        if pickerShowsExercises {
+//          selectExerciseTypeButton.backgroundColor = .lightGray
+//        } else {
+//          selectExerciseTypeButton.backgroundColor = .systemGreen
+//        }
         currentExerciseTableView.isHidden = true
         addASetLabel.isHidden = false
         saveButton.isEnabled = false
@@ -97,34 +108,43 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   }
     
   @IBAction func pressedSelectExercise(_ sender: Any) {
-    selectExerciseTypeButton.isEnabled = false
-    selectExerciseTypeButton.backgroundColor = .lightGray
-    selectSetRepWeightButton.isEnabled = true
-    selectSetRepWeightButton.backgroundColor = .systemGreen
-    pickerShowsExercises = true
+//    selectExerciseTypeButton.isEnabled = false
+//    selectExerciseTypeButton.backgroundColor = .lightGray
+//    selectSetRepWeightButton.isEnabled = true
+//    selectSetRepWeightButton.backgroundColor = .systemGreen
+//    pickerShowsExercises = true
     // reloadPicker(pickerShowsExercises)
 //    setRepWeightPicker.reloadAllComponents()
     
     // This is just for reference, will change completely
-    setupSetRepWeightPickerData(forType: "Barbell")
-    setRepWeightPicker.reloadAllComponents()
+//    setupSetRepWeightPickerData(forType: "Barbell")
+//    universalPicker.reloadAllComponents()
 //    setRepWeightSubview.isHidden = false
+    switchToExerciseListViewInPicker()
   }
   
   @IBAction func pressedSelectSetRepWeight(_ sender: Any) {
-    selectExerciseTypeButton.isEnabled = true
-    selectExerciseTypeButton.backgroundColor = .systemGreen
-    selectSetRepWeightButton.isEnabled = false
-    selectSetRepWeightButton.backgroundColor = .lightGray
-    pickerShowsExercises = false
-    setRepWeightPicker.reloadAllComponents()
-    if setRepWeightLabel.text == "not set" {
-      setRepWeightLabel.text = "\(selectedSets) x \(selectedReps) x \(selectedWeight)" + weightUnit
-      setRepWeightPicker.selectRow(4, inComponent: 0, animated: false)
-      setRepWeightPicker.selectRow(4, inComponent: 1, animated: false)
-    }
-    setRepWeightPicker.reloadAllComponents()
+//    selectExerciseTypeButton.isEnabled = true
+//    selectExerciseTypeButton.backgroundColor = .systemGreen
+//    selectSetRepWeightButton.isEnabled = false
+//    selectSetRepWeightButton.backgroundColor = .lightGray
+//    pickerShowsExercises = false
+//    universalPicker.reloadAllComponents()
+//    if setRepWeightLabel.text == "not set" {
+//      setRepWeightLabel.text = "\(selectedSets) x \(selectedReps) x \(selectedWeight)" + weightUnit
+//      universalPicker.selectRow(selectedSets - 1, inComponent: 0, animated: false)
+//      universalPicker.selectRow(selectedReps - 1, inComponent: 1, animated: false)
+//      setRepWeightPicker.selectRow(selectedWeight, inComponent: 2, animated: false)
+//    }
+//    universalPicker.reloadAllComponents()
     // reloadPicker(pickerShowsExercises)
+    print(currentExerciseGroup.exercises)
+    print(currentExerciseGroup.exercises.count)
+    if currentExerciseGroup.exercises.count == 0 {
+      switchToSetRepWeightListViewInPicker(disableExercisesPicker: false)
+    } else {
+      switchToSetRepWeightListViewInPicker(disableExercisesPicker: true)
+    }
   }
   
   @IBAction func pressedAddExerciseButton(_ sender: Any) {
@@ -133,6 +153,9 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     currentExerciseTableView.isHidden = false
     addASetLabel.isHidden = true
     currentExerciseTableView.reloadData()
+    
+    // Disable the set exercise button as we already have an exercise in the list
+    disableSelectExerciseFeature()
   }
 
   @IBAction func pressedDiscardButton(_ sender: Any) {
@@ -158,7 +181,6 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
     if pickerShowsExercises {
-//      print(exerciseTypeDB.count)
       return exerciseTypeDB.count
     } else {
       return setRepWeightStringsForPicker[component].count
@@ -167,12 +189,6 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     if pickerShowsExercises {
-//      print(exerciseTypeDB[0].exerciseName)
-//      print(exerciseTypeDB[1].exerciseName)
-//      print(exerciseTypeDB[2].exerciseName)
-//      print(exerciseTypeDB[3].exerciseName)
-//      print(exerciseTypeDB[4].exerciseName)
-//      print(exerciseTypeDB[5].exerciseName)
       return exerciseTypeDB[row].exerciseName
     } else {
       return setRepWeightStringsForPicker[component][row]
@@ -218,5 +234,64 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     setRepWeightStringsForPicker.append(repsStrings)
     setRepWeightStringsForPicker.append(weightsStrings)
   }
+  
+  func movePickerToInitialPosition() {
+    // For the exercise type picker, the initial position is "Deadlift (Barbell)" as the most common exercise
+    if pickerShowsExercises {
+      var whereDeadliftBarbellIs: Int = 0
+      for i in 0...exerciseTypeDB.count {
+        if exerciseTypeDB[i].exerciseName == "Deadlift (Barbell)" {
+          whereDeadliftBarbellIs = i
+          break
+        }
+      }
+      universalPicker.selectRow(whereDeadliftBarbellIs, inComponent: 0, animated: true)
+      exerciseLabel.text = exerciseTypeDB[whereDeadliftBarbellIs].exerciseName
+    } else {
+    // For the SetRepWeight picker, the initial position is 5 sets x 5 reps x lowest weight for the exercise category
+      
+    }
+  }
+  
+  func switchToExerciseListViewInPicker() {
+    // Set up views
+    pickerShowsExercises = true
+    selectExerciseTypeButton.isEnabled = false
+    selectExerciseTypeButton.backgroundColor = .lightGray
+    selectSetRepWeightButton.isEnabled = true
+    selectSetRepWeightButton.backgroundColor = .systemGreen
+    universalPicker.reloadAllComponents()
+  }
+  
+  func switchToSetRepWeightListViewInPicker(disableExercisesPicker: Bool) {
+    // Set up views
+    pickerShowsExercises = false
+    selectSetRepWeightButton.isEnabled = false
+    selectSetRepWeightButton.backgroundColor = .lightGray
+    if disableExercisesPicker {
+      disableSelectExerciseFeature()
+    } else {
+      enableSelectExerciseFeature()
+    }
+    
+    // set up data for the picker (depending on the exercise type)
+    setupSetRepWeightPickerData(forType: "Barbell")
+    universalPicker.reloadAllComponents()
+  }
+  
+  func disableSelectExerciseFeature() {
+    selectExerciseTypeButton.backgroundColor = .systemRed
+    selectExerciseTypeButton.isEnabled = false
+  }
+  
+  func enableSelectExerciseFeature() {
+    if pickerShowsExercises {
+      selectExerciseTypeButton.backgroundColor = .lightGray
+    } else {
+      selectExerciseTypeButton.backgroundColor = .systemGreen
+    }
+    selectExerciseTypeButton.isEnabled = true
+  }
+
   
 }

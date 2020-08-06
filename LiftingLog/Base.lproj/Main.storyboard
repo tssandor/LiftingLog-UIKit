@@ -299,7 +299,7 @@
                         <outlet property="selectExerciseTypeButton" destination="V1b-cl-irG" id="8ca-z1-Teo"/>
                         <outlet property="selectSetRepWeightButton" destination="6fE-uG-wcG" id="wgK-MU-q7y"/>
                         <outlet property="setRepWeightLabel" destination="kQx-R5-poS" id="fXJ-QP-Ocg"/>
-                        <outlet property="setRepWeightPicker" destination="mWx-g0-dCd" id="Xfn-7G-SEo"/>
+                        <outlet property="universalPicker" destination="mWx-g0-dCd" id="Xfn-7G-SEo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MNM-ZQ-lIn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
