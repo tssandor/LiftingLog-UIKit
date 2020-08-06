@@ -29,7 +29,7 @@ struct Exercise {
 }
 
 struct ExerciseGroup {
-  let exerciseType: ExerciseType
+  var exerciseType: ExerciseType
   var exercises: [Exercise]
 }
 

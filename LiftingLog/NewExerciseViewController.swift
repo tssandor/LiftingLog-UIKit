@@ -24,6 +24,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   var selectedSetsArrayIndex: Int = 0
   var selectedRepsArrayIndex: Int = 0
   var selectedWeightArrayIndex: Int = 0
+  var selectedExerciseArrayIndex: Int = 0
   var selectedExercise: String = ""
   var pickerShowsExercises: Bool = true
   var currentExerciseGroup: ExerciseGroup = ExerciseGroup(exerciseType: ExerciseType(exerciseName: "Deadlift (Barbell)", exerciseCategory: "Barbell"), exercises: [])
@@ -152,10 +153,17 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   }
   
   @IBAction func pressedAddExerciseButton(_ sender: Any) {
+    // We set the type of the current exercise to the selected one
+    currentExerciseGroup.exerciseType = exerciseTypeDB[selectedExerciseArrayIndex]
+    // And add the sets
     currentExerciseGroup.exercises.append(Exercise(sets: selectedSets, reps: selectedReps, weight: selectedWeight))
-    saveButton.isEnabled = true
-    currentExerciseTableView.isHidden = false
-    addASetLabel.isHidden = true
+    // If this is the first exercise the user added, we show the tableview and enable the Save button in the navbar
+    if currentExerciseGroup.exercises.count == 1 {
+      saveButton.isEnabled = true
+      currentExerciseTableView.isHidden = false
+      addASetLabel.isHidden = true
+    }
+    
     currentExerciseTableView.reloadData()
     
     // Disable the set exercise button as we already have an exercise in the list
@@ -167,6 +175,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   }
   
   @IBAction func pressedDeleteAllSets(_ sender: Any) {
+    // We clear the current exercises array and set up the view accordingly (no tableview, no save button)
     currentExerciseGroup.exercises = []
     currentExerciseTableView.isHidden = true
     addASetLabel.isHidden = false
@@ -213,8 +222,10 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     if pickerShowsExercises {
-      exerciseLabel.text = exerciseTypeDB[row].exerciseName
+      selectedExerciseArrayIndex = row
+      exerciseLabel.text = exerciseTypeDB[selectedExerciseArrayIndex].exerciseName
     } else {
+      // Need to rewrite not to always show barbells
       switch component {
       case 0:
         selectedSets = setsFor["Barbell"]![row]
