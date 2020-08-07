@@ -135,29 +135,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dm-Vn-C0b">
-                                <rect key="frame" x="16" y="104" width="91.5" height="20"/>
+                                <rect key="frame" x="16" y="104" width="91.5" height="21"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sets x Reps x Weight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jde-hu-qnm">
-                                <rect key="frame" x="16" y="169" width="143" height="21"/>
+                                <rect key="frame" x="16" y="170" width="143" height="21"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgK-kw-v95">
-                                <rect key="frame" x="132.5" y="459" width="149" height="37"/>
+                                <rect key="frame" x="132.5" y="460" width="149" height="37"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="   Add these sets   "/>
                                 <connections>
-                                    <action selector="pressedAddExerciseButton:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="rDd-fd-pRD"/>
+                                    <action selector="pressedPickerOperatorButton:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="rDd-fd-pRD"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gnP-46-RCM">
-                                <rect key="frame" x="0.0" y="512" width="414" height="319"/>
+                                <rect key="frame" x="0.0" y="513" width="414" height="383"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PerformedExercisesListCell" id="yN7-wF-eM5" customClass="NewExerciseViewPerformedExercisesCell" customModule="LiftingLog" customModuleProvider="target">
@@ -192,69 +192,44 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="not set" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OV-FC-kCk">
-                                <rect key="frame" x="16" y="128" width="57" height="25"/>
+                                <rect key="frame" x="16" y="129" width="57" height="25"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                 <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="not set" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQx-R5-poS">
-                                <rect key="frame" x="16" y="194" width="57" height="25"/>
+                                <rect key="frame" x="16" y="195" width="57" height="25"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                 <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a set or ten 😎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucr-x8-U8R">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Add a set or ten 😎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucr-x8-U8R">
                                 <rect key="frame" x="8" y="729.5" width="398" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWx-g0-dCd">
-                                <rect key="frame" x="24" y="227" width="366" height="216"/>
+                                <rect key="frame" x="24" y="228" width="366" height="216"/>
                                 <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="OUJ-xa-3ee" id="UXq-Ci-HkE"/>
                                     <outlet property="delegate" destination="OUJ-xa-3ee" id="Oim-L3-x9p"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1b-cl-irG">
-                                <rect key="frame" x="332" y="104" width="62" height="49"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="5oC-Dp-QE5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="   Set   ">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedSelectExercise:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="ktM-9k-0IH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fE-uG-wcG">
-                                <rect key="frame" x="332" y="169" width="62" height="50"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="   Set   ">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedSelectSetRepWeight:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="5QX-sW-yWf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OP-zb-0UX">
-                                <rect key="frame" x="135" y="843" width="144" height="37"/>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="   Delete all sets   "/>
-                                <connections>
-                                    <action selector="pressedAddExerciseButton:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="EoP-8R-8Rv"/>
-                                    <action selector="pressedDeleteAllSets:" destination="OUJ-xa-3ee" eventType="touchUpInside" id="69D-gI-RXj"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👈 Select the exercise first" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKZ-Ty-jFh">
+                                <rect key="frame" x="211" y="104" width="183" height="21"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
+                                <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="👈 Add the sets" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVV-HY-XFY">
+                                <rect key="frame" x="283" y="170" width="111" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
+                                <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -265,28 +240,20 @@
                             <constraint firstItem="0OV-FC-kCk" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" constant="16" id="5Dh-IQ-VdK"/>
                             <constraint firstItem="gnP-46-RCM" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" id="9Lm-WA-Ox9"/>
                             <constraint firstItem="Jde-hu-qnm" firstAttribute="top" secondItem="0OV-FC-kCk" secondAttribute="bottom" constant="16" id="AOd-DO-eL2"/>
-                            <constraint firstItem="V1b-cl-irG" firstAttribute="trailing" secondItem="6fE-uG-wcG" secondAttribute="trailing" id="AjF-7z-yAJ"/>
                             <constraint firstItem="kQx-R5-poS" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" constant="16" id="ERT-6R-ZKa"/>
                             <constraint firstItem="y9v-cq-rXV" firstAttribute="trailing" secondItem="mWx-g0-dCd" secondAttribute="trailing" constant="24" id="FyE-54-3KX"/>
                             <constraint firstItem="mWx-g0-dCd" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" constant="24" id="I8g-zm-brP"/>
                             <constraint firstItem="Jde-hu-qnm" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" constant="16" id="MiZ-jZ-5Yh"/>
-                            <constraint firstAttribute="bottom" secondItem="6OP-zb-0UX" secondAttribute="bottom" constant="16" id="Tte-hw-nFu"/>
                             <constraint firstItem="bgK-kw-v95" firstAttribute="centerX" secondItem="FHF-CK-Ifa" secondAttribute="centerX" id="XNn-wi-gQY"/>
                             <constraint firstItem="bgK-kw-v95" firstAttribute="top" secondItem="mWx-g0-dCd" secondAttribute="bottom" constant="16" id="ZRM-f1-Xry"/>
-                            <constraint firstItem="6OP-zb-0UX" firstAttribute="top" secondItem="gnP-46-RCM" secondAttribute="bottom" constant="12" id="bSQ-Kd-Ucd"/>
                             <constraint firstItem="mWx-g0-dCd" firstAttribute="top" secondItem="kQx-R5-poS" secondAttribute="bottom" constant="8" id="eyy-ts-5aF"/>
-                            <constraint firstItem="6fE-uG-wcG" firstAttribute="top" secondItem="Jde-hu-qnm" secondAttribute="top" id="gi7-qK-xGS"/>
-                            <constraint firstItem="6OP-zb-0UX" firstAttribute="centerX" secondItem="FHF-CK-Ifa" secondAttribute="centerX" id="gly-4B-GP9"/>
-                            <constraint firstItem="V1b-cl-irG" firstAttribute="leading" secondItem="6fE-uG-wcG" secondAttribute="leading" id="h7W-SC-Q8W"/>
                             <constraint firstItem="6Dm-Vn-C0b" firstAttribute="leading" secondItem="y9v-cq-rXV" secondAttribute="leading" constant="16" id="irz-TW-dSr"/>
-                            <constraint firstItem="V1b-cl-irG" firstAttribute="top" secondItem="6Dm-Vn-C0b" secondAttribute="top" id="lLE-tK-0TR"/>
+                            <constraint firstItem="uKZ-Ty-jFh" firstAttribute="centerY" secondItem="6Dm-Vn-C0b" secondAttribute="centerY" id="mT7-vJ-SPZ"/>
                             <constraint firstItem="kQx-R5-poS" firstAttribute="top" secondItem="Jde-hu-qnm" secondAttribute="bottom" constant="4" id="mm1-Zz-PTd"/>
-                            <constraint firstItem="6OP-zb-0UX" firstAttribute="top" secondItem="Ucr-x8-U8R" secondAttribute="bottom" constant="90" id="nbD-bR-afy"/>
                             <constraint firstAttribute="trailing" secondItem="Ucr-x8-U8R" secondAttribute="trailing" constant="8" id="p0w-1F-h3t"/>
-                            <constraint firstItem="V1b-cl-irG" firstAttribute="bottom" secondItem="0OV-FC-kCk" secondAttribute="bottom" id="txU-Cb-4YJ"/>
+                            <constraint firstAttribute="bottom" secondItem="gnP-46-RCM" secondAttribute="bottom" id="qwM-M3-YIo"/>
                             <constraint firstItem="Ucr-x8-U8R" firstAttribute="centerX" secondItem="FHF-CK-Ifa" secondAttribute="centerX" id="vQ3-aw-PeF"/>
-                            <constraint firstItem="V1b-cl-irG" firstAttribute="trailing" secondItem="FHF-CK-Ifa" secondAttribute="trailingMargin" id="wgO-Ob-M9J"/>
-                            <constraint firstItem="6fE-uG-wcG" firstAttribute="bottom" secondItem="kQx-R5-poS" secondAttribute="bottom" id="xbQ-p2-Ztf"/>
+                            <constraint firstItem="uKZ-Ty-jFh" firstAttribute="trailing" secondItem="FHF-CK-Ifa" secondAttribute="trailingMargin" id="yqr-cX-r4E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y9v-cq-rXV"/>
                     </view>
@@ -303,14 +270,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addASetLabel" destination="Ucr-x8-U8R" id="x5s-vY-431"/>
+                        <outlet property="buttonNavbarSaveExercise" destination="YTS-8l-vXI" id="5L4-df-wIZ"/>
+                        <outlet property="buttonPickerOperator" destination="bgK-kw-v95" id="Yfa-Q9-9Jn"/>
                         <outlet property="currentExerciseTableView" destination="gnP-46-RCM" id="KWL-dm-B7w"/>
-                        <outlet property="deleteAllSetsButton" destination="6OP-zb-0UX" id="9yL-jF-gcv"/>
                         <outlet property="exerciseLabel" destination="0OV-FC-kCk" id="Dzj-n1-pwI"/>
-                        <outlet property="performedExercisesTableView" destination="gnP-46-RCM" id="lqd-Ji-cLm"/>
-                        <outlet property="saveButton" destination="YTS-8l-vXI" id="5L4-df-wIZ"/>
-                        <outlet property="selectExerciseTypeButton" destination="V1b-cl-irG" id="8ca-z1-Teo"/>
-                        <outlet property="selectSetRepWeightButton" destination="6fE-uG-wcG" id="wgK-MU-q7y"/>
+                        <outlet property="infoLabelSelectExercise" destination="uKZ-Ty-jFh" id="D1k-bQ-Q4b"/>
+                        <outlet property="infolabelAddSets" destination="NVV-HY-XFY" id="sso-sa-k1g"/>
+                        <outlet property="labelNoSetsYet" destination="Ucr-x8-U8R" id="x5s-vY-431"/>
                         <outlet property="setRepWeightLabel" destination="kQx-R5-poS" id="fXJ-QP-Ocg"/>
                         <outlet property="universalPicker" destination="mWx-g0-dCd" id="Xfn-7G-SEo"/>
                     </connections>
