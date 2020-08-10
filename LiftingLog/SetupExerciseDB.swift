@@ -10,9 +10,6 @@ import Foundation
 
 var exerciseTypeDB: [ExerciseType] = []
 
-//var currentWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
-//var nextWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
-//var newestWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [])
 var workouts: [Workout] = []
 
 func setupExerciseDB() {
@@ -48,172 +45,101 @@ var weightsForEquipmentType: [Equipment:[Float]] = [
   .dumbbell:   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 ]
 
-func addDummyExercises() {
-//  currentWorkout.dateTime = Date(timeIntervalSince1970: 1596034562)
-//  
-//  currentWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Deadlift", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  currentWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Bent Over Row (dumbbell)", exerciseCategory: "Dumbbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  currentWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Deadlift", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120),
-//         Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  currentWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Deadlift", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  currentWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Deadlift", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  currentWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Deadlift", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  currentWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Deadlift", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  
-//  currentWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Bench Press", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 5, reps: 5, weight: 60)]
-//    )
-//  )
-//
-//  currentWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Bent Over Row (Barbell)", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 50),
-//         Exercise(sets: 2, reps: 5, weight: 55.5)]
-//    )
-//  )
-//
-//  nextWorkout.dateTime = Date(timeIntervalSince1970: 1596034962)
-//  
-//  nextWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  nextWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  nextWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120),
-//         Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  nextWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "N Deadlift", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  nextWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "N Bench Press", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 5, reps: 5, weight: 60)]
-//    )
-//  )
-//
-//  nextWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "N Bent Over Row (Barbell)", exerciseCategory: "Barbell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 50),
-//         Exercise(sets: 2, reps: 5, weight: 55.5)]
-//    )
-//  )
-//
-//  newestWorkout.dateTime = Date(timeIntervalSince1970: 1596035962)
-//  
-//  newestWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Kettlebell Swing", exerciseCategory: "Kettlebell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  newestWorkout.exerciseGroupsInWorkout.append(
-//    ExerciseGroup(
-//      exerciseType: ExerciseType(exerciseName: "Kettlebell Clean", exerciseCategory: "Kettlebell"),
-//      exercises:
-//        [Exercise(sets: 3, reps: 5, weight: 110),
-//         Exercise(sets: 2, reps: 5, weight: 120)]
-//    )
-//  )
-//
-//  
-//  workouts.append(currentWorkout)
-//  workouts.append(nextWorkout)
-//  workouts.append(newestWorkout)
-//  
+func getDocumentsDirectory() -> URL {
+  let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+  return paths[0]
 }
+
+func saveWorkoutsToJSON() {
+  let jsonData = try! JSONEncoder().encode(workouts)
+  let jsonString = String(data: jsonData, encoding: .utf8)!
+  print(jsonString)
+  
+  let url = getDocumentsDirectory().appendingPathComponent("workoutsJSON.json")
+  do {
+    try jsonString.write(to: url, atomically: true, encoding: .utf8)
+    let input = try String(contentsOf: url)
+    print(input)
+  } catch {
+    print(error.localizedDescription)
+  }
+}
+
+func loadWorkoutsFromJSON() -> Bool {
+  let url = getDocumentsDirectory().appendingPathComponent("workoutsJSON.json")
+  guard let data = try? Data(contentsOf: url) else {
+    workouts = []
+    return false
+  }
+  let decoder = JSONDecoder()
+  decoder.dateDecodingStrategy = .deferredToDate
+  decoder.keyDecodingStrategy = .useDefaultKeys
+
+  do {
+    try workouts = decoder.decode([Workout].self, from: data)
+  }
+  catch {
+    workouts = []
+  }
+  return true
+}
+
+//extension Bundle {
+//    func decode<T: Decodable>(_ type: T.Type, from file: String, dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) -> T {
+//        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+//        let path = paths[0]
+//        let url = path.appendingPathComponent("workoutsJSON.json")
+//
+//        guard let data = try? Data(contentsOf: url) else {
+//            fatalError("Failed to load \(file) from bundle.")
+//        }
+//
+//        let decoder = JSONDecoder()
+//        decoder.dateDecodingStrategy = dateDecodingStrategy
+//        decoder.keyDecodingStrategy = keyDecodingStrategy
+//
+//        do {
+//            return try decoder.decode(T.self, from: data)
+//        } catch DecodingError.keyNotFound(let key, let context) {
+//            fatalError("Failed to decode \(file) from bundle due to missing key '\(key.stringValue)' not found – \(context.debugDescription)")
+//        } catch DecodingError.typeMismatch(_, let context) {
+//            fatalError("Failed to decode \(file) from bundle due to type mismatch – \(context.debugDescription)")
+//        } catch DecodingError.valueNotFound(let type, let context) {
+//            fatalError("Failed to decode \(file) from bundle due to missing \(type) value – \(context.debugDescription)")
+//        } catch DecodingError.dataCorrupted(_) {
+//            fatalError("Failed to decode \(file) from bundle because it appears to be invalid JSON")
+//        } catch {
+//            fatalError("Failed to decode \(file) from bundle: \(error.localizedDescription)")
+//        }
+//    }
+//}
+//
+//extension JSONSerialization {
+//    static func loadJSON(withFilename filename: String) throws -> Any? {
+//        let fm = FileManager.default
+//        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
+//        if let url = urls.first {
+//            var fileURL = url.appendingPathComponent(filename)
+//            fileURL = fileURL.appendingPathExtension("json")
+//            let data = try Data(contentsOf: fileURL)
+//            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers, .mutableLeaves])
+//            return jsonObject
+//        }
+//        return nil
+//    }
+//
+//    static func saveJSON(jsonObject: Any, toFilename filename: String) throws -> Bool{
+//        let fm = FileManager.default
+//        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
+//        if let url = urls.first {
+//            var fileURL = url.appendingPathComponent(filename)
+//            fileURL = fileURL.appendingPathExtension("json")
+//            let data = try JSONSerialization.data(withJSONObject: jsonObject, options: [.prettyPrinted])
+//            try data.write(to: fileURL, options: [.atomicWrite])
+//            return true
+//        }
+//
+//        return false
+//    }
+//}
+

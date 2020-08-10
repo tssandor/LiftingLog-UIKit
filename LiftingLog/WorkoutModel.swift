@@ -8,32 +8,32 @@
 
 import Foundation
 
-enum Equipment: String, Decodable {
+enum Equipment: String, Codable {
   case dumbbell
   case barbell
 //  case bodyweight
 //  case bands
 }
 
-struct ExerciseType: Decodable {
+struct ExerciseType: Codable {
   let exerciseName: String
 //  let exerciseCategory: Equipment
   let exerciseCategory: Equipment
 }
 
-struct Exercise {
+struct Exercise: Codable {
 //  let exercise: ExerciseType
   let sets: Int
   let reps: Int
   let weight: Float
 }
 
-struct ExerciseGroup {
+struct ExerciseGroup: Codable {
   var exerciseType: ExerciseType
   var exercises: [Exercise]
 }
 
-struct Workout {
+struct Workout: Codable {
   var dateTime: Date
   var exerciseGroupsInWorkout: [ExerciseGroup]
   var rating: Int

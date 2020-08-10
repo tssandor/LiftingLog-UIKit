@@ -114,11 +114,13 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   @IBAction func pressedSaveButton(_ sender: Any) {
     if indexOfWorkoutBeingEdited > -1 {
       workouts[indexOfWorkoutBeingEdited] = currentWorkout
+      saveWorkoutsToJSON()
       self.navigationController?.popViewController(animated: true)
     } else {
       workouts.reverse()
       workouts.append(currentWorkout)
       workouts.reverse()
+      saveWorkoutsToJSON()
       self.navigationController?.popViewController(animated: true)
     }
   }

@@ -21,6 +21,7 @@
 		193DEC3424D17C4300E5B49A /* NewWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC3324D17C4300E5B49A /* NewWorkoutTableViewCell.swift */; };
 		19D3C9FE24D3B25E00C5FF70 /* WorkoutsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C9FD24D3B25E00C5FF70 /* WorkoutsListViewController.swift */; };
 		19D3CA0024D3B55600C5FF70 /* WorkoutsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C9FF24D3B55600C5FF70 /* WorkoutsListTableViewCell.swift */; };
+		19F1F57F24E164E400713AA4 /* workoutsJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 19F1F57E24E164E400713AA4 /* workoutsJSON.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		193DEC3324D17C4300E5B49A /* NewWorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		19D3C9FD24D3B25E00C5FF70 /* WorkoutsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListViewController.swift; sourceTree = "<group>"; };
 		19D3C9FF24D3B55600C5FF70 /* WorkoutsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListTableViewCell.swift; sourceTree = "<group>"; };
+		19F1F57E24E164E400713AA4 /* workoutsJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = workoutsJSON.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				193DEC1F24D16C5F00E5B49A /* LiftingLog.xcdatamodeld */,
 				193DEC2F24D16E0700E5B49A /* WorkoutModel.swift */,
 				193DEC3124D16E3100E5B49A /* SetupExerciseDB.swift */,
+				19F1F57E24E164E400713AA4 /* workoutsJSON.json */,
 			);
 			path = LiftingLog;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				193DEC2624D16C6300E5B49A /* LaunchScreen.storyboard in Resources */,
+				19F1F57F24E164E400713AA4 /* workoutsJSON.json in Resources */,
 				193DEC2324D16C6300E5B49A /* Assets.xcassets in Resources */,
 				193DEC1E24D16C5F00E5B49A /* Main.storyboard in Resources */,
 			);

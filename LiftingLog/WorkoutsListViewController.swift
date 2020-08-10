@@ -22,11 +22,8 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     self.title = "LiftingLog"
     self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     self.workoutsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    _ = loadWorkoutsFromJSON()
     setupExerciseDB()
-//    addDummyExercises()
-    workouts.reverse()
-//    noWorkoutsLabel.isHidden = true
-//    self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.png")!)
   }
   
   override func viewWillAppear(_ animated: Bool) {
