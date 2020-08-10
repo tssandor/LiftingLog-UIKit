@@ -18,6 +18,13 @@ enum PickerState {
   case selectingSets
 }
 
+enum Equipment {
+  case dumbbell
+  case barbell
+  case bodyweight
+  case bands
+}
+
 class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate {
   
   var delegate: ChildViewControllerDelegate?
@@ -31,8 +38,8 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   var selectedWeightArrayIndex: Int = 0
   var selectedExerciseArrayIndex: Int = 0
   var selectedExercise: String = ""
-//  var pickerShowsExercises: Bool = true
-//  var exerciseTypeAlreadySet: Bool = false
+  var equipmentForSelectedExercise: Equipment = .barbell
+  // The default exercise type is Deadlift (Barbell), and no exercises yet
   var currentExerciseGroup: ExerciseGroup = ExerciseGroup(exerciseType: ExerciseType(exerciseName: "Deadlift (Barbell)", exerciseCategory: "Barbell"), exercises: [])
   
   var pickerState: PickerState = .selectingExercise
@@ -42,8 +49,8 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   @IBOutlet weak var buttonNavbarSaveExercise: UIBarButtonItem!
   @IBOutlet weak var currentExerciseTableView: UITableView!
   @IBOutlet weak var labelNoSetsYet: UILabel!
-  @IBOutlet weak var exerciseLabel: UILabel!
-  @IBOutlet weak var setRepWeightLabel: UILabel!
+  @IBOutlet weak var labelSelectedExercise: UILabel!
+  @IBOutlet weak var labelSetRepWeightSelected: UILabel!
 //  @IBOutlet weak var buttonDeleteAllSets: UIButton!
   @IBOutlet weak var infoLabelSelectExercise: UILabel!
   @IBOutlet weak var infolabelAddSets: UILabel!
@@ -52,13 +59,18 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    // THIS
     setupSetRepWeightPickerData(forType: "Barbell")
-    selectedSets = setsFor["Barbell"]![4]
-    selectedReps = repsFor["Barbell"]![4]
-    selectedWeight = weightsFor["Barbell"]![0]
+    selectedSets = setsForEquipmentType["Barbell"]![4]
+    selectedReps = repsForEqupimentType["Barbell"]![4]
+    selectedWeight = weightsForEquipmentType["Barbell"]![0]
+    // THIS
     
     setupDesign()
     resetViewToZero()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
   }
   
   func setupDesign() {
@@ -69,7 +81,6 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
 
   func resetViewToZero() {
     // deleting all exercises
-//    currentExerciseGroup.exercises = []
     currentExerciseGroup.exercises.removeAll()
     
     // back to the original state
@@ -87,23 +98,16 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     self.infoLabelSelectExercise.isHidden = false
 //    self.infoLabelSelectExercise.text = "👈 Select the exercise first"
     self.infolabelAddSets.isHidden = true
-    self.setRepWeightLabel.textColor = .lightGray
-    self.exerciseLabel.textColor = .systemIndigo
-    self.exerciseLabel.text = "not set"
-    self.setRepWeightLabel.text = "not set"
+    self.labelSetRepWeightSelected.textColor = .lightGray
+    self.labelSelectedExercise.textColor = .systemIndigo
+    self.labelSelectedExercise.text = "not set"
+    self.labelSetRepWeightSelected.text = "not set"
 
     // setting up the universal picker
     self.universalPicker.reloadAllComponents()
     
-    // setting up the delete all sets button
+    // updating the button
     refreshPickerOperatorButtonState(nextState: pickerState)
-    
-    // setting up the delete all sets button
-//    self.buttonDeleteAllSets.isEnabled = false
-//    self.buttonDeleteAllSets.backgroundColor = .lightGray
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -136,11 +140,10 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
       // first we change the exercise type in the current exercise group
       currentExerciseGroup.exerciseType = exerciseTypeDB[selectedExerciseArrayIndex]
       // then we refresh the info area
-      exerciseLabel.textColor = .lightGray
-      setRepWeightLabel.textColor = .systemIndigo
-      exerciseLabel.text = "🔒 " + exerciseLabel.text!
-//      infoLabelSelectExercise.text = "👈 Delete sets to change exercise type"
-//      infoLabelSelectExercise.isHidden = true
+      labelSelectedExercise.textColor = .lightGray
+      infoLabelSelectExercise.isHidden = true
+      labelSetRepWeightSelected.textColor = .systemIndigo
+      labelSelectedExercise.text = "🔒 " + labelSelectedExercise.text!
       infolabelAddSets.isHidden = false
       // then we toggle picker to SetsRepsWeight mode
       universalPicker.reloadAllComponents()
@@ -157,20 +160,32 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
       }
       currentExerciseTableView.reloadData()
       // Enable the delete all sets button
-//      buttonDeleteAllSets.isEnabled = true
-//      buttonDeleteAllSets.backgroundColor = .systemRed
     }
   }
   
-  @IBAction func pressedDeleteAllSets(_ sender: Any) {
-    // We clear the current exercises array and reset the interface
-//    pickerState = .selectingExercise
-//    currentExerciseGroup.exercises = []
-    resetViewToZero()
+  func refreshPickerOperatorButtonState(nextState: PickerState) {
+    if nextState == .selectingExercise {
+      buttonPickerOperator.setTitle("   Select this exercise   ", for: .normal)
+    }
+    if nextState == .selectingSets {
+      buttonPickerOperator.setTitle("   Add these sets   ", for: .normal)
+    }
   }
   
   @IBAction func pressedDiscardButton(_ sender: Any) {
-    self.navigationController?.popViewController(animated: true)
+    if currentExerciseGroup.exercises.count == 0 {
+      self.navigationController?.popViewController(animated: true)
+    } else {
+      let alertController = UIAlertController(title: "Watch out!", message: "You've already added some sets to this exercise. Are you sure you want to discard it?", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+          self.navigationController?.popViewController(animated: true)
+        }
+        alertController.addAction(OKAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+        }
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
+    }
   }
   
   @IBAction func pressedSaveButton(_ sender: Any) {
@@ -183,6 +198,8 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   // **********************************
   
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    // if we are about to display exercise types, we return 1 component
+    // for sets-reps-weight we return 3 components
     if pickerState == .selectingExercise {
       return 1
     } else {
@@ -191,6 +208,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   }
   
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    // we configure the number of options in the picker
     if pickerState == .selectingExercise {
       return exerciseTypeDB.count
     } else {
@@ -209,27 +227,28 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     if pickerState == .selectingExercise {
       selectedExerciseArrayIndex = row
-      exerciseLabel.text = exerciseTypeDB[selectedExerciseArrayIndex].exerciseName
+      labelSelectedExercise.text = exerciseTypeDB[selectedExerciseArrayIndex].exerciseName
     } else {
       // Need to rewrite not to always show barbells
       switch component {
       case 0:
-        selectedSets = setsFor["Barbell"]![row]
+        selectedSets = setsForEquipmentType["Barbell"]![row]
       case 1:
-        selectedReps = repsFor["Barbell"]![row]
+        selectedReps = repsForEqupimentType["Barbell"]![row]
       case 2:
-        selectedWeight = weightsFor["Barbell"]![row]
+        selectedWeight = weightsForEquipmentType["Barbell"]![row]
       default:
         print("something went horribly wrong :]")
       }
-      setRepWeightLabel.text = "\(selectedSets) x \(selectedReps) x \(selectedWeight)" + weightUnit
+      labelSetRepWeightSelected.text = "\(selectedSets) x \(selectedReps) x \(selectedWeight)" + weightUnit
     }
   }
 
   func setupSetRepWeightPickerData(forType: String) {
-    let sets: [Int] = setsFor[forType]!
-    let reps: [Int] = repsFor[forType]!
-    let weights: [Float] = weightsFor[forType]!
+    
+    let sets: [Int] = setsForEquipmentType[forType]!
+    let reps: [Int] = repsForEqupimentType[forType]!
+    let weights: [Float] = weightsForEquipmentType[forType]!
     var setsStrings: [String] = []
     var repsStrings: [String] = []
     var weightsStrings: [String] = []
@@ -309,16 +328,5 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
 //    }
 //    selectExerciseTypeButton.isEnabled = true
   }
-  
-  func refreshPickerOperatorButtonState(nextState: PickerState) {
-//    print(nextState)
-    if nextState == .selectingExercise {
-      buttonPickerOperator.setTitle("   Select this exercise   ", for: .normal)
-    }
-    if nextState == .selectingSets {
-      buttonPickerOperator.setTitle("   Add these sets   ", for: .normal)
-    }
-  }
-
   
 }
