@@ -21,6 +21,7 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   @IBOutlet weak var noExercisesLabel: UILabel!
   @IBOutlet weak var saveButton: UIBarButtonItem!
   
+  let itsANewWorkout = -1
   var currentWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
   var workoutReceivedFromPreviousController: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
   var indexOfWorkoutBeingEdited: Int = -1
@@ -30,9 +31,9 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     if workoutReceivedFromPreviousController.exerciseGroupsInWorkout.count > 0 {
       currentWorkout = workoutReceivedFromPreviousController
     } else {
-      indexOfWorkoutBeingEdited = -1
+      indexOfWorkoutBeingEdited = itsANewWorkout
     }
-    if indexOfWorkoutBeingEdited == -1 {
+    if indexOfWorkoutBeingEdited == itsANewWorkout {
       self.title = "New Workout #\(workouts.count+1)"
     } else {
       self.title = "Editing Workout #\(workouts.count-indexOfWorkoutBeingEdited)"
@@ -112,7 +113,7 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   }
   
   @IBAction func pressedSaveButton(_ sender: Any) {
-    if indexOfWorkoutBeingEdited > -1 {
+    if indexOfWorkoutBeingEdited > itsANewWorkout {
       workouts[indexOfWorkoutBeingEdited] = currentWorkout
       saveWorkoutsToJSON()
       self.navigationController?.popViewController(animated: true)

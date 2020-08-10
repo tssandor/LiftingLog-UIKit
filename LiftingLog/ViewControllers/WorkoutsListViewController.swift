@@ -13,16 +13,15 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   @IBOutlet var workoutsTableView: UITableView!
   @IBOutlet weak var noWorkoutsLabel: UILabel!
   
+  let itsANewWorkout = -1
   var selectedWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
-  var indexOfWorkoutBeingEdited: Int = -1
+  var indexOfWorkoutBeingEdited: Int = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.workoutsTableView.separatorStyle = .none
-    self.title = "LiftingLog"
-    self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
-    self.workoutsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    setupDesign()
     _ = loadWorkoutsFromJSON()
+    indexOfWorkoutBeingEdited = itsANewWorkout
     setupExerciseDB()
   }
   
@@ -38,13 +37,24 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     workoutsTableView.reloadData()
   }
   
+  func setupDesign() {
+    self.title = "LiftingLog"
+//    let attrs = [
+//        NSAttributedString.Key.foregroundColor: UIColor.white,
+//        NSAttributedString.Key.font: UIFont(name: "AvenirNext-HeavyItalic", size: 20)!
+//    ]
+//    self.navigationController.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "CaviarDreams", size: 20)!]
+    self.workoutsTableView.separatorStyle = .none
+    self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    self.workoutsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return workouts.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath) as! WorkoutsListTableViewCell
-
     var stars: String = ""
     for i in 1...5 {
       if i <= workouts[indexPath.row].rating {
@@ -52,17 +62,13 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
       } else {
         stars = stars + "⚪️"
       }
-      
     }
     cell.workoutStarsLabel.text = stars
-    
     let workoutNumber = workouts.count - indexPath.row
-//    cell.workoutNumberLabel.text = "Workout #\(workoutNumber)"
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
     let dateString = dateFormatter.string(from: workouts[indexPath.row].dateTime)
     cell.workoutNumberAndDateLabel.text = "Workout #\(workoutNumber) (\(dateString))"
-    
     
     var detailsText: String
     switch workouts[indexPath.row].exerciseGroupsInWorkout.count {
@@ -90,7 +96,6 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     detailsText = detailsText + "\nTotal weight moved: \(totalWeight)" + weightUnit
 
     cell.workoutDetailsLabel.text = detailsText
-//    cell.workoutDetailsLabel.text = "Total weight moved: \(totalWeight)" + weightUnit
     return cell
   }
   
@@ -101,8 +106,6 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
       workouts.reverse()
       tableView.deleteRows(at: [indexPath], with: .fade)
       tableView.reloadData()
-    } else if editingStyle == .insert {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
   }
   
@@ -114,15 +117,11 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   
   @IBAction func pressedAddNewWorkout(_ sender: Any) {
     selectedWorkout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
-    indexOfWorkoutBeingEdited = -1
+    indexOfWorkoutBeingEdited = itsANewWorkout
     performSegue(withIdentifier: "AddNewWorkoutSegue", sender: nil)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    if segue.identifier == "WorkoutDetailSegue" {
-//      let workoutDetailTableViewController = segue.destination as! WorkoutDetailViewController
-//      workoutDetailTableViewController.workoutDisplayed = selectedWorkout
-//    }
     if segue.identifier == "AddNewWorkoutSegue" {
       let newWorkoutTableViewController = segue.destination as! NewWorkoutViewController
       newWorkoutTableViewController.workoutReceivedFromPreviousController = selectedWorkout

@@ -17,12 +17,10 @@ enum Equipment: String, Codable {
 
 struct ExerciseType: Codable {
   let exerciseName: String
-//  let exerciseCategory: Equipment
   let exerciseCategory: Equipment
 }
 
 struct Exercise: Codable {
-//  let exercise: ExerciseType
   let sets: Int
   let reps: Int
   let weight: Float

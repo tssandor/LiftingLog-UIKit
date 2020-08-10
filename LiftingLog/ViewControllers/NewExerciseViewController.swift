@@ -210,9 +210,9 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   
   func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
     if pickerState == .selectingExercise {
-      return NSAttributedString(string: exerciseTypeDB[row].exerciseName, attributes: [NSAttributedString.Key.font:UIFont(name: "AvenirNext-DemiBold", size: 16.0)!,NSAttributedString.Key.foregroundColor:UIColor.systemIndigo])
+      return NSAttributedString(string: exerciseTypeDB[row].exerciseName, attributes: [NSAttributedString.Key.font:UIFont(name: "AvenirNext-DemiBold", size: 16.0)!,NSAttributedString.Key.foregroundColor:UIColor.black])
     } else {
-      return NSAttributedString(string: setRepWeightStringsForPicker[component][row], attributes: [NSAttributedString.Key.font:UIFont(name: "AvenirNext-DemiBold", size: 16.0)!,NSAttributedString.Key.foregroundColor:UIColor.systemIndigo])
+      return NSAttributedString(string: setRepWeightStringsForPicker[component][row], attributes: [NSAttributedString.Key.font:UIFont(name: "AvenirNext-DemiBold", size: 16.0)!,NSAttributedString.Key.foregroundColor:UIColor.black])
     }
   }
   
