@@ -28,20 +28,13 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    if workoutReceivedFromPreviousController.exerciseGroupsInWorkout.count > 0 {
+    if indexOfWorkoutBeingEdited > itsANewWorkout {
       currentWorkout = workoutReceivedFromPreviousController
     } else {
       indexOfWorkoutBeingEdited = itsANewWorkout
     }
-    if indexOfWorkoutBeingEdited == itsANewWorkout {
-      self.title = "New Workout #\(workouts.count+1)"
-    } else {
-      self.title = "Editing Workout #\(workouts.count-indexOfWorkoutBeingEdited)"
-    }
-    self.exerciseGroupsTableView.separatorStyle = .none
+    setupDesign()
     currentWorkout.exerciseGroupsInWorkout.reverse()
-    self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
-    self.exerciseGroupsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +46,19 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
       self.noExercisesLabel.isHidden = true
       self.exerciseGroupsTableView.reloadData()
     }
+    exerciseGroupsTableView.scroll(to: .top, animated: true)
+  }
+  
+  func setupDesign() {
+    if indexOfWorkoutBeingEdited == itsANewWorkout {
+      self.title = "New Workout #\(workouts.count+1)"
+    } else {
+      self.title = "Editing Workout #\(workouts.count-indexOfWorkoutBeingEdited)"
+    }
+    self.exerciseGroupsTableView.separatorStyle = .none
+    self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    self.exerciseGroupsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    resetViewToZero()
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,11 +102,11 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     self.navigationController?.pushViewController(goNext, animated: true)
   }
 
-  @IBAction func pressedCancelButton(_ sender: Any) {
-    if currentWorkout.exerciseGroupsInWorkout.count == 0 {
+  @IBAction func pressedDiscardButton(_ sender: Any) {
+    if currentWorkout.exerciseGroupsInWorkout.count == 0 || !saveButton.isEnabled {
       self.navigationController?.popViewController(animated: true)
     } else {
-      let alertController = UIAlertController(title: "Watch out!", message: "This workout is not empty. Are you sure you want to discard it?", preferredStyle: .alert)
+      let alertController = UIAlertController(title: "Watch out!", message: "This workout was modified. Are you sure you want to discard it?", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
           self.navigationController?.popViewController(animated: true)
         }

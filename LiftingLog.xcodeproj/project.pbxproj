@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19023AA424D81B4900D6EBD6 /* NewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19023AA324D81B4900D6EBD6 /* NewExerciseViewController.swift */; };
+		19175CBB24E1A46700BD70B0 /* ExtensionTableviewScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19175CBA24E1A46700BD70B0 /* ExtensionTableviewScroll.swift */; };
 		192CC42824D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192CC42724D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift */; };
 		193DEC1724D16C5F00E5B49A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC1624D16C5F00E5B49A /* AppDelegate.swift */; };
 		193DEC1924D16C5F00E5B49A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC1824D16C5F00E5B49A /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		19023AA324D81B4900D6EBD6 /* NewExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewController.swift; sourceTree = "<group>"; };
+		19175CBA24E1A46700BD70B0 /* ExtensionTableviewScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTableviewScroll.swift; sourceTree = "<group>"; };
 		192CC42724D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewPerformedExercisesCell.swift; sourceTree = "<group>"; };
 		193DEC1324D16C5F00E5B49A /* LiftingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		193DEC1624D16C5F00E5B49A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				193DEC3324D17C4300E5B49A /* NewWorkoutTableViewCell.swift */,
 				19023AA324D81B4900D6EBD6 /* NewExerciseViewController.swift */,
 				192CC42724D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift */,
+				19175CBA24E1A46700BD70B0 /* ExtensionTableviewScroll.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19D3C9FE24D3B25E00C5FF70 /* WorkoutsListViewController.swift in Sources */,
+				19175CBB24E1A46700BD70B0 /* ExtensionTableviewScroll.swift in Sources */,
 				193DEC1B24D16C5F00E5B49A /* NewWorkoutViewController.swift in Sources */,
 				193DEC3024D16E0700E5B49A /* WorkoutModel.swift in Sources */,
 				193DEC1724D16C5F00E5B49A /* AppDelegate.swift in Sources */,

@@ -35,15 +35,11 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
     }
     // We need this reload so it's updated when we come back from adding a new workout
     workoutsTableView.reloadData()
+    workoutsTableView.scroll(to: .top, animated: true)
   }
   
   func setupDesign() {
     self.title = "LiftingLog"
-//    let attrs = [
-//        NSAttributedString.Key.foregroundColor: UIColor.white,
-//        NSAttributedString.Key.font: UIFont(name: "AvenirNext-HeavyItalic", size: 20)!
-//    ]
-//    self.navigationController.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "CaviarDreams", size: 20)!]
     self.workoutsTableView.separatorStyle = .none
     self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     self.workoutsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)

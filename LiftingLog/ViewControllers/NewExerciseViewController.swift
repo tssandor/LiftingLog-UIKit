@@ -81,7 +81,6 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     // setting up the exercise + weight info area
     self.infolabelSelectExercise.isHidden = false
-//    self.infoLabelSelectExercise.text = "👈 Select the exercise first"
     self.infolabelAddSets.isHidden = true
     self.labelSetRepWeightSelected.textColor = .lightGray
     self.labelSelectedExercise.textColor = .systemIndigo
