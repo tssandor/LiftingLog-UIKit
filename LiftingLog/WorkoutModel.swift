@@ -8,17 +8,17 @@
 
 import Foundation
 
-//enum Equipment {
-//  case dumbbell
-//  case barbell
+enum Equipment: String, Decodable {
+  case dumbbell
+  case barbell
 //  case bodyweight
 //  case bands
-//}
+}
 
 struct ExerciseType: Decodable {
   let exerciseName: String
 //  let exerciseCategory: Equipment
-  let exerciseCategory: String
+  let exerciseCategory: Equipment
 }
 
 struct Exercise {

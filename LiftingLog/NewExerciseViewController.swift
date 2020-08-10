@@ -18,21 +18,14 @@ enum PickerState {
   case selectingSets
 }
 
-enum Equipment {
-  case dumbbell
-  case barbell
-  case bodyweight
-  case bands
-}
-
 class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate {
   
   var delegate: ChildViewControllerDelegate?
   
   var setRepWeightStringsForPicker: [[String]] = [[String]]()
-  var selectedSets: Int = 0
-  var selectedReps: Int = 0
-  var selectedWeight: Float = 0
+//  var selectedSets: Int = 0
+//  var selectedReps: Int = 0
+//  var selectedWeight: Float = 0
   var selectedSetsArrayIndex: Int = 0
   var selectedRepsArrayIndex: Int = 0
   var selectedWeightArrayIndex: Int = 0
@@ -40,7 +33,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   var selectedExercise: String = ""
   var equipmentForSelectedExercise: Equipment = .barbell
   // The default exercise type is Deadlift (Barbell), and no exercises yet
-  var currentExerciseGroup: ExerciseGroup = ExerciseGroup(exerciseType: ExerciseType(exerciseName: "Deadlift (Barbell)", exerciseCategory: "Barbell"), exercises: [])
+  var currentExerciseGroup: ExerciseGroup = ExerciseGroup(exerciseType: ExerciseType(exerciseName: "Deadlift (Barbell)", exerciseCategory: .barbell), exercises: [])
   
   var pickerState: PickerState = .selectingExercise
   
@@ -60,10 +53,10 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   override func viewDidLoad() {
     super.viewDidLoad()
     // THIS
-    setupSetRepWeightPickerData(forType: "Barbell")
-    selectedSets = setsForEquipmentType["Barbell"]![4]
-    selectedReps = repsForEqupimentType["Barbell"]![4]
-    selectedWeight = weightsForEquipmentType["Barbell"]![0]
+//    setupSetRepWeightPickerData(forType: .barbell)
+//    selectedSets = setsForEquipmentType[.barbell]![4]
+//    selectedReps = repsForEqupimentType[.barbell]![4]
+//    selectedWeight = weightsForEquipmentType[.barbell]![16]
     // THIS
     
     setupDesign()
@@ -86,6 +79,9 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     // back to the original state
     pickerState = .selectingExercise
     
+    // back to the default exercise type of barbell
+    equipmentForSelectedExercise = .barbell
+    
     // hiding the tableview as there are nothing in it
     self.currentExerciseTableView.isHidden = true
     self.currentExerciseTableView.reloadData()
@@ -104,7 +100,9 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     self.labelSetRepWeightSelected.text = "not set"
 
     // setting up the universal picker
+    setupSetRepWeightPickerData(forType: .barbell)
     self.universalPicker.reloadAllComponents()
+    scrollPickerToDefaultValues()
     
     // updating the button
     refreshPickerOperatorButtonState(nextState: pickerState)
@@ -145,13 +143,17 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
       labelSetRepWeightSelected.textColor = .systemIndigo
       labelSelectedExercise.text = "🔒 " + labelSelectedExercise.text!
       infolabelAddSets.isHidden = false
+      // we set the selected equpiment so we can display the appropriate weights
+      equipmentForSelectedExercise = exerciseTypeDB[selectedExerciseArrayIndex].exerciseCategory
+      setupSetRepWeightPickerData(forType: equipmentForSelectedExercise)
       // then we toggle picker to SetsRepsWeight mode
       universalPicker.reloadAllComponents()
+      scrollPickerToDefaultValues()
       // then we toggle the picker operator button to the next state
       refreshPickerOperatorButtonState(nextState: pickerState)
     } else {
       // we add these sets to the current exercises
-      currentExerciseGroup.exercises.append(Exercise(sets: selectedSets, reps: selectedReps, weight: selectedWeight))
+      currentExerciseGroup.exercises.append(Exercise(sets: setsForEquipmentType[equipmentForSelectedExercise]![selectedSetsArrayIndex], reps: repsForEquipmentType[equipmentForSelectedExercise]![selectedRepsArrayIndex], weight: weightsForEquipmentType[equipmentForSelectedExercise]![selectedWeightArrayIndex]))
       // If this is the first exercise the user added, we show the tableview and enable the Save button in the navbar
       if currentExerciseGroup.exercises.count == 1 {
         buttonNavbarSaveExercise.isEnabled = true
@@ -232,22 +234,24 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
       // Need to rewrite not to always show barbells
       switch component {
       case 0:
-        selectedSets = setsForEquipmentType["Barbell"]![row]
+        selectedSetsArrayIndex = row
+//        selectedSets = setsForEquipmentType[equipmentForSelectedExercise]![row]
       case 1:
-        selectedReps = repsForEqupimentType["Barbell"]![row]
+        selectedRepsArrayIndex = row
+//        selectedReps = repsForEqupimentType[equipmentForSelectedExercise]![row]
       case 2:
-        selectedWeight = weightsForEquipmentType["Barbell"]![row]
+        selectedWeightArrayIndex = row
+//        selectedWeight = weightsForEquipmentType[equipmentForSelectedExercise]![row]
       default:
         print("something went horribly wrong :]")
       }
-      labelSetRepWeightSelected.text = "\(selectedSets) x \(selectedReps) x \(selectedWeight)" + weightUnit
+      labelSetRepWeightSelected.text = "\(setsForEquipmentType[equipmentForSelectedExercise]![selectedSetsArrayIndex]) x \(repsForEquipmentType[equipmentForSelectedExercise]![selectedRepsArrayIndex]) x \(weightsForEquipmentType[equipmentForSelectedExercise]![selectedWeightArrayIndex])" + weightUnit
     }
   }
 
-  func setupSetRepWeightPickerData(forType: String) {
-    
+  func setupSetRepWeightPickerData(forType: Equipment) {
     let sets: [Int] = setsForEquipmentType[forType]!
-    let reps: [Int] = repsForEqupimentType[forType]!
+    let reps: [Int] = repsForEquipmentType[forType]!
     let weights: [Float] = weightsForEquipmentType[forType]!
     var setsStrings: [String] = []
     var repsStrings: [String] = []
@@ -270,26 +274,38 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     setRepWeightStringsForPicker.append(weightsStrings)
   }
   
-  func setupNothingSelectedAtPicker() {
-//    if pickerState == .selectingExercise {
-//      var whereDeadliftBarbellIs: Int = 0
-//      for i in 0...exerciseTypeDB.count {
-//        if exerciseTypeDB[i].exerciseName == "Deadlift (Barbell)" {
-//          whereDeadliftBarbellIs = i
-//          break
-//        }
-//      }
-//      universalPicker.selectRow(0, inComponent: 0, animated: true)
-//      exerciseLabel.text = "not set"
-//    } else {
-//      universalPicker.selectRow(0, inComponent: 0, animated: false)
-//      universalPicker.selectRow(0, inComponent: 1, animated: false)
-//      universalPicker.selectRow(0, inComponent: 2, animated: false)
-//      setRepWeightLabel.text = "not set"
-//    }
+  func scrollPickerToDefaultValues() {
+    if pickerState == .selectingExercise {
+      var whereDeadliftBarbellIs: Int = 0
+      for i in 0...exerciseTypeDB.count {
+        if exerciseTypeDB[i].exerciseName == "Deadlift (Barbell)" {
+          whereDeadliftBarbellIs = i
+          break
+        }
+      }
+      universalPicker.selectRow(whereDeadliftBarbellIs, inComponent: 0, animated: true)
+      selectedExerciseArrayIndex = whereDeadliftBarbellIs
+      labelSelectedExercise.text = "Deadlift (Barbell)"
+    } else {
+      universalPicker.selectRow(4, inComponent: 0, animated: false)
+      universalPicker.selectRow(4, inComponent: 1, animated: false)
+      var whereToScrollWeightPicker: Int = 0
+      switch equipmentForSelectedExercise {
+      case .barbell:
+        whereToScrollWeightPicker = 16
+      case .dumbbell:
+        whereToScrollWeightPicker = 8
+      }
+      universalPicker.selectRow(whereToScrollWeightPicker, inComponent: 2, animated: false)
+      selectedRepsArrayIndex = 4
+      selectedSetsArrayIndex = 4
+      selectedWeightArrayIndex = whereToScrollWeightPicker
+      labelSetRepWeightSelected.text = "\(setsForEquipmentType[equipmentForSelectedExercise]![selectedSetsArrayIndex]) x \(repsForEquipmentType[equipmentForSelectedExercise]![selectedRepsArrayIndex]) x \(weightsForEquipmentType[equipmentForSelectedExercise]![selectedWeightArrayIndex])" + weightUnit
+
+    }
   }
   
-  func switchToExerciseListViewInPicker() {
+//  func switchToExerciseListViewInPicker() {
     // Set up views
 //    pickerState = .selectingExercise
 //    selectExerciseTypeButton.isEnabled = false
@@ -297,30 +313,30 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
 //    selectSetRepWeightButton.isEnabled = true
 //    selectSetRepWeightButton.backgroundColor = .systemGreen
 //    universalPicker.reloadAllComponents()
-  }
+//  }
   
-  func switchToSetRepWeightListViewInPicker(disableExercisesPicker: Bool) {
+//  func switchToSetRepWeightListViewInPicker(disableExercisesPicker: Bool) {
     // Set up views
-    pickerState = .selectingSets
+//    pickerState = .selectingSets
 //    selectSetRepWeightButton.isEnabled = false
 //    selectSetRepWeightButton.backgroundColor = .lightGray
-    if disableExercisesPicker {
-      disableSelectExerciseFeature()
-    } else {
-      enableSelectExerciseFeature()
-    }
+//    if disableExercisesPicker {
+//      disableSelectExerciseFeature()
+//    } else {
+//      enableSelectExerciseFeature()
+//    }
     
     // set up data for the picker (depending on the exercise type)
-    setupSetRepWeightPickerData(forType: "Barbell")
-    universalPicker.reloadAllComponents()
-  }
+//    setupSetRepWeightPickerData(forType: .barbell)
+//    universalPicker.reloadAllComponents()
+//  }
   
-  func disableSelectExerciseFeature() {
+//  func disableSelectExerciseFeature() {
 //    selectExerciseTypeButton.backgroundColor = .systemRed
 //    selectExerciseTypeButton.isEnabled = false
-  }
+//  }
   
-  func enableSelectExerciseFeature() {
+//  func enableSelectExerciseFeature() {
 //    if pickerShowsExercises {
 //      selectExerciseTypeButton.backgroundColor = .lightGray
 //    } else {
@@ -329,4 +345,4 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
 //    selectExerciseTypeButton.isEnabled = true
   }
   
-}
+//}

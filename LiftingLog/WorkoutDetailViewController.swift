@@ -28,7 +28,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutDetailCell", for: indexPath) as! WorkoutDetailTableViewCell
 
-    cell.exerciseCategoryLabel.text = workoutDisplayed.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseCategory
+    cell.exerciseCategoryLabel.text = workoutDisplayed.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseCategory.rawValue
     cell.exerciseNameLabel.text = workoutDisplayed.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseName
 
     var setsDetails: String = ""
