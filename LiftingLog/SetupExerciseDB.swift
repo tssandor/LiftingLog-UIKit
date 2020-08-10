@@ -13,7 +13,6 @@ var exerciseTypeDB: [ExerciseType] = []
 var workouts: [Workout] = []
 
 func setupExerciseDB() {
-//  exerciseTypeDB.append(ExerciseType(exerciseName: "-- SELECT EXERCISE --", exerciseCategory: "Barbell"))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Bench Press", exerciseCategory: .barbell))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Bent Over Row (Barbell)", exerciseCategory: .barbell))
   exerciseTypeDB.append(ExerciseType(exerciseName: "Bent Over Row (Dumbbell)", exerciseCategory: .dumbbell))
@@ -53,13 +52,9 @@ func getDocumentsDirectory() -> URL {
 func saveWorkoutsToJSON() {
   let jsonData = try! JSONEncoder().encode(workouts)
   let jsonString = String(data: jsonData, encoding: .utf8)!
-  print(jsonString)
-  
   let url = getDocumentsDirectory().appendingPathComponent("workoutsJSON.json")
   do {
     try jsonString.write(to: url, atomically: true, encoding: .utf8)
-    let input = try String(contentsOf: url)
-    print(input)
   } catch {
     print(error.localizedDescription)
   }
@@ -74,7 +69,6 @@ func loadWorkoutsFromJSON() -> Bool {
   let decoder = JSONDecoder()
   decoder.dateDecodingStrategy = .deferredToDate
   decoder.keyDecodingStrategy = .useDefaultKeys
-
   do {
     try workouts = decoder.decode([Workout].self, from: data)
   }
@@ -83,63 +77,3 @@ func loadWorkoutsFromJSON() -> Bool {
   }
   return true
 }
-
-//extension Bundle {
-//    func decode<T: Decodable>(_ type: T.Type, from file: String, dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) -> T {
-//        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-//        let path = paths[0]
-//        let url = path.appendingPathComponent("workoutsJSON.json")
-//
-//        guard let data = try? Data(contentsOf: url) else {
-//            fatalError("Failed to load \(file) from bundle.")
-//        }
-//
-//        let decoder = JSONDecoder()
-//        decoder.dateDecodingStrategy = dateDecodingStrategy
-//        decoder.keyDecodingStrategy = keyDecodingStrategy
-//
-//        do {
-//            return try decoder.decode(T.self, from: data)
-//        } catch DecodingError.keyNotFound(let key, let context) {
-//            fatalError("Failed to decode \(file) from bundle due to missing key '\(key.stringValue)' not found – \(context.debugDescription)")
-//        } catch DecodingError.typeMismatch(_, let context) {
-//            fatalError("Failed to decode \(file) from bundle due to type mismatch – \(context.debugDescription)")
-//        } catch DecodingError.valueNotFound(let type, let context) {
-//            fatalError("Failed to decode \(file) from bundle due to missing \(type) value – \(context.debugDescription)")
-//        } catch DecodingError.dataCorrupted(_) {
-//            fatalError("Failed to decode \(file) from bundle because it appears to be invalid JSON")
-//        } catch {
-//            fatalError("Failed to decode \(file) from bundle: \(error.localizedDescription)")
-//        }
-//    }
-//}
-//
-//extension JSONSerialization {
-//    static func loadJSON(withFilename filename: String) throws -> Any? {
-//        let fm = FileManager.default
-//        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
-//        if let url = urls.first {
-//            var fileURL = url.appendingPathComponent(filename)
-//            fileURL = fileURL.appendingPathExtension("json")
-//            let data = try Data(contentsOf: fileURL)
-//            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers, .mutableLeaves])
-//            return jsonObject
-//        }
-//        return nil
-//    }
-//
-//    static func saveJSON(jsonObject: Any, toFilename filename: String) throws -> Bool{
-//        let fm = FileManager.default
-//        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
-//        if let url = urls.first {
-//            var fileURL = url.appendingPathComponent(filename)
-//            fileURL = fileURL.appendingPathExtension("json")
-//            let data = try JSONSerialization.data(withJSONObject: jsonObject, options: [.prettyPrinted])
-//            try data.write(to: fileURL, options: [.atomicWrite])
-//            return true
-//        }
-//
-//        return false
-//    }
-//}
-

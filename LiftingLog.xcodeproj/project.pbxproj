@@ -13,7 +13,6 @@
 		193DEC1924D16C5F00E5B49A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC1824D16C5F00E5B49A /* SceneDelegate.swift */; };
 		193DEC1B24D16C5F00E5B49A /* NewWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC1A24D16C5F00E5B49A /* NewWorkoutViewController.swift */; };
 		193DEC1E24D16C5F00E5B49A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 193DEC1C24D16C5F00E5B49A /* Main.storyboard */; };
-		193DEC2124D16C5F00E5B49A /* LiftingLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC1F24D16C5F00E5B49A /* LiftingLog.xcdatamodeld */; };
 		193DEC2324D16C6300E5B49A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 193DEC2224D16C6300E5B49A /* Assets.xcassets */; };
 		193DEC2624D16C6300E5B49A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 193DEC2424D16C6300E5B49A /* LaunchScreen.storyboard */; };
 		193DEC3024D16E0700E5B49A /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC2F24D16E0700E5B49A /* WorkoutModel.swift */; };
@@ -21,7 +20,6 @@
 		193DEC3424D17C4300E5B49A /* NewWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC3324D17C4300E5B49A /* NewWorkoutTableViewCell.swift */; };
 		19D3C9FE24D3B25E00C5FF70 /* WorkoutsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C9FD24D3B25E00C5FF70 /* WorkoutsListViewController.swift */; };
 		19D3CA0024D3B55600C5FF70 /* WorkoutsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C9FF24D3B55600C5FF70 /* WorkoutsListTableViewCell.swift */; };
-		19F1F57F24E164E400713AA4 /* workoutsJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 19F1F57E24E164E400713AA4 /* workoutsJSON.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +30,6 @@
 		193DEC1824D16C5F00E5B49A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		193DEC1A24D16C5F00E5B49A /* NewWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewController.swift; sourceTree = "<group>"; };
 		193DEC1D24D16C5F00E5B49A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		193DEC2024D16C5F00E5B49A /* LiftingLog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiftingLog.xcdatamodel; sourceTree = "<group>"; };
 		193DEC2224D16C6300E5B49A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		193DEC2524D16C6300E5B49A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		193DEC2724D16C6300E5B49A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,7 +38,6 @@
 		193DEC3324D17C4300E5B49A /* NewWorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		19D3C9FD24D3B25E00C5FF70 /* WorkoutsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListViewController.swift; sourceTree = "<group>"; };
 		19D3C9FF24D3B55600C5FF70 /* WorkoutsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListTableViewCell.swift; sourceTree = "<group>"; };
-		19F1F57E24E164E400713AA4 /* workoutsJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = workoutsJSON.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +82,8 @@
 				193DEC2224D16C6300E5B49A /* Assets.xcassets */,
 				193DEC2424D16C6300E5B49A /* LaunchScreen.storyboard */,
 				193DEC2724D16C6300E5B49A /* Info.plist */,
-				193DEC1F24D16C5F00E5B49A /* LiftingLog.xcdatamodeld */,
 				193DEC2F24D16E0700E5B49A /* WorkoutModel.swift */,
 				193DEC3124D16E3100E5B49A /* SetupExerciseDB.swift */,
-				19F1F57E24E164E400713AA4 /* workoutsJSON.json */,
 			);
 			path = LiftingLog;
 			sourceTree = "<group>";
@@ -153,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				193DEC2624D16C6300E5B49A /* LaunchScreen.storyboard in Resources */,
-				19F1F57F24E164E400713AA4 /* workoutsJSON.json in Resources */,
 				193DEC2324D16C6300E5B49A /* Assets.xcassets in Resources */,
 				193DEC1E24D16C5F00E5B49A /* Main.storyboard in Resources */,
 			);
@@ -171,7 +164,6 @@
 				193DEC3024D16E0700E5B49A /* WorkoutModel.swift in Sources */,
 				193DEC1724D16C5F00E5B49A /* AppDelegate.swift in Sources */,
 				193DEC3424D17C4300E5B49A /* NewWorkoutTableViewCell.swift in Sources */,
-				193DEC2124D16C5F00E5B49A /* LiftingLog.xcdatamodeld in Sources */,
 				192CC42824D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift in Sources */,
 				193DEC3224D16E3100E5B49A /* SetupExerciseDB.swift in Sources */,
 				19D3CA0024D3B55600C5FF70 /* WorkoutsListTableViewCell.swift in Sources */,
@@ -374,19 +366,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		193DEC1F24D16C5F00E5B49A /* LiftingLog.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				193DEC2024D16C5F00E5B49A /* LiftingLog.xcdatamodel */,
-			);
-			currentVersion = 193DEC2024D16C5F00E5B49A /* LiftingLog.xcdatamodel */;
-			path = LiftingLog.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 193DEC0B24D16C5F00E5B49A /* Project object */;
 }
