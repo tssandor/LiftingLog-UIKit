@@ -22,10 +22,21 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   @IBOutlet weak var saveButton: UIBarButtonItem!
   
   var currentWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
+  var workoutReceivedFromPreviousController: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
+  var indexOfWorkoutBeingEdited: Int = -1
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "New Workout #\(workouts.count+1)"
+    if workoutReceivedFromPreviousController.exerciseGroupsInWorkout.count > 0 {
+      currentWorkout = workoutReceivedFromPreviousController
+    } else {
+      indexOfWorkoutBeingEdited = -1
+    }
+    if indexOfWorkoutBeingEdited == -1 {
+      self.title = "New Workout #\(workouts.count+1)"
+    } else {
+      self.title = "Editing Workout #\(workouts.count-indexOfWorkoutBeingEdited)"
+    }
     self.exerciseGroupsTableView.separatorStyle = .none
     currentWorkout.exerciseGroupsInWorkout.reverse()
     self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
@@ -76,7 +87,6 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
       }
     }
   }
-
   
   @IBAction func pressedAddNewExerciseButton(_ sender: Any) {
     let goNext = storyboard!.instantiateViewController(withIdentifier: "NewExerciseVewController") as! NewExerciseViewController
@@ -102,10 +112,15 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   }
   
   @IBAction func pressedSaveButton(_ sender: Any) {
-    workouts.reverse()
-    workouts.append(currentWorkout)
-    workouts.reverse()
-    self.navigationController?.popViewController(animated: true)
+    if indexOfWorkoutBeingEdited > -1 {
+      workouts[indexOfWorkoutBeingEdited] = currentWorkout
+      self.navigationController?.popViewController(animated: true)
+    } else {
+      workouts.reverse()
+      workouts.append(currentWorkout)
+      workouts.reverse()
+      self.navigationController?.popViewController(animated: true)
+    }
   }
   
   func resetViewToZero() {

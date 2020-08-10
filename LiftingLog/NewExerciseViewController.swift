@@ -23,9 +23,6 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   var delegate: ChildViewControllerDelegate?
   
   var setRepWeightStringsForPicker: [[String]] = [[String]]()
-//  var selectedSets: Int = 0
-//  var selectedReps: Int = 0
-//  var selectedWeight: Float = 0
   var selectedSetsArrayIndex: Int = 0
   var selectedRepsArrayIndex: Int = 0
   var selectedWeightArrayIndex: Int = 0
@@ -44,32 +41,24 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   @IBOutlet weak var labelNoSetsYet: UILabel!
   @IBOutlet weak var labelSelectedExercise: UILabel!
   @IBOutlet weak var labelSetRepWeightSelected: UILabel!
-//  @IBOutlet weak var buttonDeleteAllSets: UIButton!
-  @IBOutlet weak var infoLabelSelectExercise: UILabel!
+  @IBOutlet weak var infolabelSelectExercise: UILabel!
   @IBOutlet weak var infolabelAddSets: UILabel!
+  @IBOutlet weak var infolabelSwipeRightToDelete: UILabel!
   @IBOutlet weak var buttonPickerOperator: UIButton!
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // THIS
-//    setupSetRepWeightPickerData(forType: .barbell)
-//    selectedSets = setsForEquipmentType[.barbell]![4]
-//    selectedReps = repsForEqupimentType[.barbell]![4]
-//    selectedWeight = weightsForEquipmentType[.barbell]![16]
-    // THIS
-    
     setupDesign()
     resetViewToZero()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
   }
   
   func setupDesign() {
     self.title = "New exercise"
     self.currentExerciseTableView.separatorStyle = .none
     self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    self.universalPicker.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+    self.universalPicker.tintColor = .systemIndigo
   }
 
   func resetViewToZero() {
@@ -91,7 +80,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     self.buttonNavbarSaveExercise.isEnabled = false
     
     // setting up the exercise + weight info area
-    self.infoLabelSelectExercise.isHidden = false
+    self.infolabelSelectExercise.isHidden = false
 //    self.infoLabelSelectExercise.text = "👈 Select the exercise first"
     self.infolabelAddSets.isHidden = true
     self.labelSetRepWeightSelected.textColor = .lightGray
@@ -106,6 +95,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     // updating the button
     refreshPickerOperatorButtonState(nextState: pickerState)
+    infolabelSwipeRightToDelete.isHidden = true
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -139,7 +129,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
       currentExerciseGroup.exerciseType = exerciseTypeDB[selectedExerciseArrayIndex]
       // then we refresh the info area
       labelSelectedExercise.textColor = .lightGray
-      infoLabelSelectExercise.isHidden = true
+      infolabelSelectExercise.isHidden = true
       labelSetRepWeightSelected.textColor = .systemIndigo
       labelSelectedExercise.text = "🔒 " + labelSelectedExercise.text!
       infolabelAddSets.isHidden = false
@@ -161,7 +151,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
         labelNoSetsYet.isHidden = true
       }
       currentExerciseTableView.reloadData()
-      // Enable the delete all sets button
+      infolabelSwipeRightToDelete.isHidden = false
     }
   }
   
@@ -218,13 +208,21 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
   }
   
-  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+  func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
     if pickerState == .selectingExercise {
-      return exerciseTypeDB[row].exerciseName
+      return NSAttributedString(string: exerciseTypeDB[row].exerciseName, attributes: [NSAttributedString.Key.font:UIFont(name: "AvenirNext-DemiBold", size: 16.0)!,NSAttributedString.Key.foregroundColor:UIColor.systemIndigo])
     } else {
-      return setRepWeightStringsForPicker[component][row]
+      return NSAttributedString(string: setRepWeightStringsForPicker[component][row], attributes: [NSAttributedString.Key.font:UIFont(name: "AvenirNext-DemiBold", size: 16.0)!,NSAttributedString.Key.foregroundColor:UIColor.systemIndigo])
     }
   }
+  
+//  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//    if pickerState == .selectingExercise {
+//      return exerciseTypeDB[row].exerciseName
+//    } else {
+//      return setRepWeightStringsForPicker[component][row]
+//    }
+//  }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     if pickerState == .selectingExercise {
@@ -276,9 +274,11 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
       var whereToScrollWeightPicker: Int = 0
       switch equipmentForSelectedExercise {
       case .barbell:
+        // we set it to 60kg
         whereToScrollWeightPicker = 16
       case .dumbbell:
-        whereToScrollWeightPicker = 8
+        // we set it to 10kg
+        whereToScrollWeightPicker = 11
       }
       universalPicker.selectRow(whereToScrollWeightPicker, inComponent: 2, animated: false)
       selectedRepsArrayIndex = 4

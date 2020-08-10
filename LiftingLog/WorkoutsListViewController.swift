@@ -14,6 +14,7 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   @IBOutlet weak var noWorkoutsLabel: UILabel!
   
   var selectedWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
+  var indexOfWorkoutBeingEdited: Int = -1
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -109,18 +110,26 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    selectedWorkout = workouts[indexPath.row]
-    performSegue(withIdentifier: "WorkoutDetailSegue", sender: nil)
+    indexOfWorkoutBeingEdited = indexPath.row
+    selectedWorkout = workouts[indexOfWorkoutBeingEdited]
+    performSegue(withIdentifier: "AddNewWorkoutSegue", sender: nil)
   }
   
   @IBAction func pressedAddNewWorkout(_ sender: Any) {
+    selectedWorkout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
+    indexOfWorkoutBeingEdited = -1
     performSegue(withIdentifier: "AddNewWorkoutSegue", sender: nil)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "WorkoutDetailSegue" {
-      let workoutDetailTableViewController = segue.destination as! WorkoutDetailViewController
-      workoutDetailTableViewController.workoutDisplayed = selectedWorkout
+//    if segue.identifier == "WorkoutDetailSegue" {
+//      let workoutDetailTableViewController = segue.destination as! WorkoutDetailViewController
+//      workoutDetailTableViewController.workoutDisplayed = selectedWorkout
+//    }
+    if segue.identifier == "AddNewWorkoutSegue" {
+      let newWorkoutTableViewController = segue.destination as! NewWorkoutViewController
+      newWorkoutTableViewController.workoutReceivedFromPreviousController = selectedWorkout
+      newWorkoutTableViewController.indexOfWorkoutBeingEdited = indexOfWorkoutBeingEdited
     }
   }
   
