@@ -11,9 +11,9 @@ import UIKit
 class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChildViewControllerDelegate {
  
   func childViewControllerResponse(newlyAddedExerciseGroup: ExerciseGroup) {
-    newWorkout.exerciseGroupsInWorkout.reverse()
-    newWorkout.exerciseGroupsInWorkout.append(newlyAddedExerciseGroup)
-    newWorkout.exerciseGroupsInWorkout.reverse()
+    currentWorkout.exerciseGroupsInWorkout.reverse()
+    currentWorkout.exerciseGroupsInWorkout.append(newlyAddedExerciseGroup)
+    currentWorkout.exerciseGroupsInWorkout.reverse()
     saveButton.isEnabled = true
   }
   
@@ -21,20 +21,19 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   @IBOutlet weak var noExercisesLabel: UILabel!
   @IBOutlet weak var saveButton: UIBarButtonItem!
   
-  var newWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
+  var currentWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "New Workout #\(workouts.count+1)"
     self.exerciseGroupsTableView.separatorStyle = .none
-    newWorkout.exerciseGroupsInWorkout.reverse()
-    saveButton.isEnabled = false
+    currentWorkout.exerciseGroupsInWorkout.reverse()
     self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     self.exerciseGroupsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    if newWorkout.exerciseGroupsInWorkout.count == 0 {
+    if currentWorkout.exerciseGroupsInWorkout.count == 0 {
       self.exerciseGroupsTableView.isHidden = true
       self.noExercisesLabel.isHidden = false
     } else {
@@ -45,21 +44,18 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return newWorkout.exerciseGroupsInWorkout.count
+    return currentWorkout.exerciseGroupsInWorkout.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseGroupCell", for: indexPath) as! NewWorkoutTableViewCell
-
-    cell.exerciseCategoryLabel.text = newWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseCategory.rawValue
-    cell.exerciseCategoryLabel.isHidden = true
-    cell.exerciseNameLabel.text = newWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseName
+    cell.exerciseNameLabel.text = currentWorkout.exerciseGroupsInWorkout[indexPath.row].exerciseType.exerciseName
 
     var setsDetails: String = ""
     
-    for i in 0...newWorkout.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
-      let sets = newWorkout.exerciseGroupsInWorkout[indexPath.row].exercises[i]
-      if i == newWorkout.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
+    for i in 0...currentWorkout.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
+      let sets = currentWorkout.exerciseGroupsInWorkout[indexPath.row].exercises[i]
+      if i == currentWorkout.exerciseGroupsInWorkout[indexPath.row].exercises.count-1 {
         setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)" + weightUnit)
       } else {
         setsDetails.append("\(sets.sets) x \(sets.reps) x \(sets.weight)" + weightUnit + "\n")
@@ -70,6 +66,18 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     return cell
   }
   
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      currentWorkout.exerciseGroupsInWorkout.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+      // If there are no more exercise groups, we go back to the first state
+      if currentWorkout.exerciseGroupsInWorkout.count == 0 {
+        resetViewToZero()
+      }
+    }
+  }
+
+  
   @IBAction func pressedAddNewExerciseButton(_ sender: Any) {
     let goNext = storyboard!.instantiateViewController(withIdentifier: "NewExerciseVewController") as! NewExerciseViewController
     // This is important for passing data back to here later
@@ -78,7 +86,7 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   }
 
   @IBAction func pressedCancelButton(_ sender: Any) {
-    if newWorkout.exerciseGroupsInWorkout.count == 0 {
+    if currentWorkout.exerciseGroupsInWorkout.count == 0 {
       self.navigationController?.popViewController(animated: true)
     } else {
       let alertController = UIAlertController(title: "Watch out!", message: "This workout is not empty. Are you sure you want to discard it?", preferredStyle: .alert)
@@ -95,8 +103,16 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   
   @IBAction func pressedSaveButton(_ sender: Any) {
     workouts.reverse()
-    workouts.append(newWorkout)
+    workouts.append(currentWorkout)
     workouts.reverse()
     self.navigationController?.popViewController(animated: true)
   }
+  
+  func resetViewToZero() {
+    saveButton.isEnabled = false
+    self.exerciseGroupsTableView.isHidden = true
+    self.noExercisesLabel.isHidden = false
+  }
+  
 }
+

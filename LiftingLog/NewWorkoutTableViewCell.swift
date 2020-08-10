@@ -10,7 +10,7 @@ import UIKit
 
 class NewWorkoutTableViewCell: UITableViewCell {
   
-  @IBOutlet weak var exerciseCategoryLabel: UILabel!
+//  @IBOutlet weak var exerciseCategoryLabel: UILabel!
   @IBOutlet weak var exerciseNameLabel: UILabel!
   @IBOutlet weak var setsMultilineLabel: UILabel!
 
