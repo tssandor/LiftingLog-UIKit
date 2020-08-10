@@ -88,6 +88,7 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
     if editingStyle == .delete {
       currentWorkout.exerciseGroupsInWorkout.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .fade)
+      saveButton.isEnabled = true
       // If there are no more exercise groups, we go back to the first state
       if currentWorkout.exerciseGroupsInWorkout.count == 0 {
         resetViewToZero()

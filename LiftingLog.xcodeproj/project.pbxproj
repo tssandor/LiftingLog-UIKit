@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		19023AA424D81B4900D6EBD6 /* NewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19023AA324D81B4900D6EBD6 /* NewExerciseViewController.swift */; };
 		19175CBB24E1A46700BD70B0 /* ExtensionTableviewScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19175CBA24E1A46700BD70B0 /* ExtensionTableviewScroll.swift */; };
+		19175CBD24E1ADC000BD70B0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19175CBC24E1ADC000BD70B0 /* SettingsViewController.swift */; };
 		192CC42824D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192CC42724D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift */; };
 		193DEC1724D16C5F00E5B49A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC1624D16C5F00E5B49A /* AppDelegate.swift */; };
 		193DEC1924D16C5F00E5B49A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DEC1824D16C5F00E5B49A /* SceneDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		19023AA324D81B4900D6EBD6 /* NewExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewController.swift; sourceTree = "<group>"; };
 		19175CBA24E1A46700BD70B0 /* ExtensionTableviewScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTableviewScroll.swift; sourceTree = "<group>"; };
+		19175CBC24E1ADC000BD70B0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		192CC42724D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewPerformedExercisesCell.swift; sourceTree = "<group>"; };
 		193DEC1324D16C5F00E5B49A /* LiftingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		193DEC1624D16C5F00E5B49A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				193DEC3324D17C4300E5B49A /* NewWorkoutTableViewCell.swift */,
 				19023AA324D81B4900D6EBD6 /* NewExerciseViewController.swift */,
 				192CC42724D8FD0E0095B3B4 /* NewExerciseViewPerformedExercisesCell.swift */,
+				19175CBC24E1ADC000BD70B0 /* SettingsViewController.swift */,
 				19175CBA24E1A46700BD70B0 /* ExtensionTableviewScroll.swift */,
 			);
 			path = ViewControllers;
@@ -189,6 +192,7 @@
 				19D3CA0024D3B55600C5FF70 /* WorkoutsListTableViewCell.swift in Sources */,
 				193DEC1924D16C5F00E5B49A /* SceneDelegate.swift in Sources */,
 				19023AA424D81B4900D6EBD6 /* NewExerciseViewController.swift in Sources */,
+				19175CBD24E1ADC000BD70B0 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

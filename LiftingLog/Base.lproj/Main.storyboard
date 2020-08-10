@@ -320,7 +320,7 @@
                                     <action selector="pressedAddNewWorkout:" destination="kRx-7x-wvF" eventType="touchUpInside" id="6G7-su-fV5"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zU9-dj-AIW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zU9-dj-AIW">
                                 <rect key="frame" x="0.0" y="214" width="414" height="682"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -401,7 +401,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x0a-aa-Vra"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Tnl-u2-qWK"/>
+                    <navigationItem key="navigationItem" id="Tnl-u2-qWK">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="61H-QP-aqX">
+                            <connections>
+                                <segue destination="ciM-wT-0Zg" kind="show" id="JPM-ae-uEP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="noWorkoutsLabel" destination="Tof-m1-vQ3" id="Xv3-xW-DWz"/>
                         <outlet property="workoutsTableView" destination="zU9-dj-AIW" id="P86-Ua-AnC"/>
@@ -411,6 +417,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gN5-pM-xNs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1086" y="807"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="A5O-T5-Mkd">
+            <objects>
+                <viewController id="ciM-wT-0Zg" customClass="SettingsViewController" customModule="LiftingLog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RSc-6w-cDu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWC-an-zEK">
+                                <rect key="frame" x="112" y="112" width="190" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="   Reset workout database   ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedDeleteAllWorkouts:" destination="ciM-wT-0Zg" eventType="touchUpInside" id="Thq-fM-sCq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KWC-an-zEK" firstAttribute="top" secondItem="LMF-1g-Wu7" secondAttribute="top" constant="24" id="d2d-D9-jf2"/>
+                            <constraint firstItem="KWC-an-zEK" firstAttribute="centerX" secondItem="RSc-6w-cDu" secondAttribute="centerX" id="gSL-2m-zro"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LMF-1g-Wu7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ang-eN-EFM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LuF-cp-osq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="1573"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zIH-Lv-1uo">

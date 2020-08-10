@@ -102,6 +102,7 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
       workouts.reverse()
       tableView.deleteRows(at: [indexPath], with: .fade)
       tableView.reloadData()
+      saveWorkoutsToJSON()
     }
   }
   

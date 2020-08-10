@@ -104,7 +104,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let performedExercisesListCell = tableView.dequeueReusableCell(withIdentifier: "PerformedExercisesListCell", for: indexPath) as! NewExerciseViewPerformedExercisesCell
     performedExercisesListCell.performedExerciseListLabel.text =
-      "\(currentExerciseGroup.exerciseType.exerciseName) - \(currentExerciseGroup.exercises[indexPath.row].sets) x \(currentExerciseGroup.exercises[indexPath.row].reps) x \(currentExerciseGroup.exercises[indexPath.row].weight)" + weightUnit
+      "\(currentExerciseGroup.exercises[indexPath.row].sets) sets x \(currentExerciseGroup.exercises[indexPath.row].reps) reps x \(currentExerciseGroup.exercises[indexPath.row].weight)" + weightUnit
     return performedExercisesListCell
   }
   
@@ -209,9 +209,10 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
   
   func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
     if pickerState == .selectingExercise {
-      return NSAttributedString(string: exerciseTypeDB[row].exerciseName, attributes: [NSAttributedString.Key.font:UIFont(name: "AvenirNext-DemiBold", size: 16.0)!,NSAttributedString.Key.foregroundColor:UIColor.black])
+      // https://www.reddit.com/r/Xcode/comments/hfqp9u/nsattributedstringattributes_for_pickerview_not/
+      return NSAttributedString(string: exerciseTypeDB[row].exerciseName, attributes: [NSAttributedString.Key.font:UIFont(name: "AvenirNext-DemiBold", size: 14.0)!,NSAttributedString.Key.foregroundColor:UIColor.black])
     } else {
-      return NSAttributedString(string: setRepWeightStringsForPicker[component][row], attributes: [NSAttributedString.Key.font:UIFont(name: "AvenirNext-DemiBold", size: 16.0)!,NSAttributedString.Key.foregroundColor:UIColor.black])
+      return NSAttributedString(string: setRepWeightStringsForPicker[component][row], attributes: [NSAttributedString.Key.font:UIFont(name: "AvenirNext-DemiBold", size: 14.0)!,NSAttributedString.Key.foregroundColor:UIColor.black])
     }
   }
   
@@ -259,14 +260,14 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     if pickerState == .selectingExercise {
       var whereDeadliftBarbellIs: Int = 0
       for i in 0...exerciseTypeDB.count {
-        if exerciseTypeDB[i].exerciseName == "Deadlift (Barbell)" {
+        if exerciseTypeDB[i].exerciseName == "Deadlift (barbell)" {
           whereDeadliftBarbellIs = i
           break
         }
       }
       universalPicker.selectRow(whereDeadliftBarbellIs, inComponent: 0, animated: true)
       selectedExerciseArrayIndex = whereDeadliftBarbellIs
-      labelSelectedExercise.text = "Deadlift (Barbell)"
+      labelSelectedExercise.text = "Deadlift (barbell)"
     } else {
       universalPicker.selectRow(4, inComponent: 0, animated: false)
       universalPicker.selectRow(4, inComponent: 1, animated: false)
