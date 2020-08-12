@@ -10,12 +10,26 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupDesign()
+  }
+  
+  func setupDesign() {
+    self.title = "Settings"
+    self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+  }
+  
+  @IBAction func pressedGoToGitHub(_ sender: Any) {
+    guard let url = URL(string: "https://github.com/tssandor/LiftingLog-UIKit") else { return }
+    UIApplication.shared.open(url)
+  }
+  
+  @IBAction func pressedGoToRW(_ sender: Any) {
+    guard let url = URL(string: "https://www.raywenderlich.com") else { return }
+    UIApplication.shared.open(url)
+  }
+  
   @IBAction func pressedDeleteAllWorkouts(_ sender: Any) {
       let alertController = UIAlertController(title: "Danger zone!", message: "You are about to delete your whole workout database. There is NO WAY to undo this. Are you sure?", preferredStyle: .alert)
       let OKAction = UIAlertAction(title: "Delete all", style: .default) { (action:UIAlertAction!) in
