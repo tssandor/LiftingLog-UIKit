@@ -1,0 +1,322 @@
+[
+  {
+    "exerciseName" : "Arnold Press",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Around The World",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Back Extension (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Back Extension (plates)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Bench Press (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Bench Press (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Bench Press Close Grip (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Bench Press Wide Grip (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Bent Over Row (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Bent Over Row (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Bent Over Row One Arm",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Bent Over Row Underhand (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Biceps Curl (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Biceps Curl (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Box Squat",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Bulgarian Split Squat",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Chest Fly",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Clean",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Clean and Jerk",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Concentration Curl",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Deadlift (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Deadlift (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Deadlift High Pull (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Decline Bench Press (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Decline Bench Press (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Front Raise (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Front Raise (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Front Raise (plates)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Front Squat (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Good Morning (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Hack Squat (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Front Squat (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Hammer Curl (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Hang Clean (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Hang Snatch (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Hip Thrust (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Incline Bench Press (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Incline Bench Press (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Incline Curl (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Incline Row (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Lateral Raise (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Lunge (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Lunge (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Military Press (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Overhead Press (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Overhead Press (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Overhead Squat (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Power Clean (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Power Snatch (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Preacher Curl (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Preacher Curl (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Pullover (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Push Press (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Reverse Curl (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Reverse Curl (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Reverse Fly (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Romanian Deadlift (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Romanian Deadlift (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Seated Overhead Press (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Seated Overhead Press (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Shrug (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Shrug (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Side Bend (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Skullcrusher (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Skullcrusher (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Snatch (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Snatch Pull (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Split Jerk (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Squat (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Squat (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Standing Calf Raise (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Standing Calf Raise (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Sumo Deadlift (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Sumo Deadlift High Pull (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Trap Bar Deadlift (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Triceps Extension (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Triceps Extension (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Upright Row (barbell)",
+    "exerciseCategory" : "barbell"
+  },
+  {
+    "exerciseName" : "Upright Row (dumbbell)",
+    "exerciseCategory" : "dumbbell"
+  },
+  {
+    "exerciseName" : "Zercher Squat (barbell)",
+    "exerciseCategory" : "barbell"
+  }
+]
