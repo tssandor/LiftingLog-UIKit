@@ -55,6 +55,16 @@ func setupWeights() {
   weightsForEquipmentType[.dumbbell] = weights
 }
 
+func calculateTotalWeightInWorkout(in thisWorkout: Workout) -> Float {
+  var totalWeight: Float = 0
+  for oneExerciseGroup in thisWorkout.exerciseGroupsInWorkout {
+    for oneExercise in oneExerciseGroup.exercises {
+      totalWeight = totalWeight + Float(oneExercise.sets * oneExercise.reps) * oneExercise.weight
+    }
+  }
+  return totalWeight
+}
+
 // ***
 // JSON METHODS
 // ***

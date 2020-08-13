@@ -121,6 +121,8 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   
   @IBAction func pressedSaveButton(_ sender: Any) {
     if indexOfWorkoutBeingEdited > itsANewWorkout {
+      let difference = calculateTotalWeightInWorkout(in: currentWorkout) - calculateTotalWeightInWorkout(in: workouts[indexOfWorkoutBeingEdited])
+      updateTotalWeightOnServer(with: difference)
       workouts[indexOfWorkoutBeingEdited] = currentWorkout
       saveWorkoutsToJSON()
       self.navigationController?.popViewController(animated: true)
@@ -128,11 +130,31 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
       workouts.reverse()
       workouts.append(currentWorkout)
       workouts.reverse()
+      let difference = calculateTotalWeightInWorkout(in: currentWorkout)
+      updateTotalWeightOnServer(with: difference)
       saveWorkoutsToJSON()
       self.navigationController?.popViewController(animated: true)
     }
   }
   
+//
+//  func calculateWeightDifferenceAfterEditingAWorkout() -> Float {
+//    var totalOldWeight: Float = 0
+//    for oneExerciseGroup in workouts[indexOfWorkoutBeingEdited].exerciseGroupsInWorkout {
+//      for oneExercise in oneExerciseGroup.exercises {
+//        totalOldWeight = totalOldWeight + Float(oneExercise.sets * oneExercise.reps) * oneExercise.weight
+//      }
+//    }
+//    var totalNewWeight: Float = 0
+//    for oneExerciseGroup in currentWorkout.exerciseGroupsInWorkout {
+//      for oneExercise in oneExerciseGroup.exercises {
+//        totalNewWeight = totalNewWeight + Float(oneExercise.sets * oneExercise.reps) * oneExercise.weight
+//      }
+//    }
+//    print("Total old: \(totalOldWeight)\nNew total: \(totalNewWeight)\nThe difference is \(totalNewWeight-totalOldWeight)")
+//    return totalNewWeight - totalOldWeight
+//  }
+    
   func resetViewToZero() {
     saveButton.isEnabled = false
     self.exerciseGroupsTableView.isHidden = true

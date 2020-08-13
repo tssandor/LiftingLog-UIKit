@@ -35,7 +35,7 @@ class SettingsViewController: UIViewController {
       let OKAction = UIAlertAction(title: "Delete all", style: .default) { (action:UIAlertAction!) in
         workouts = []
         saveWorkoutsToJSON()
-//          self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
       }
       alertController.addAction(OKAction)
       let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in

@@ -112,9 +112,9 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      workouts.reverse()
+      let difference = 0 - calculateTotalWeightInWorkout(in: workouts[indexPath.row])
+      updateTotalWeightOnServer(with: difference)
       workouts.remove(at: indexPath.row)
-      workouts.reverse()
       tableView.deleteRows(at: [indexPath], with: .fade)
       tableView.reloadData()
       saveWorkoutsToJSON()
