@@ -11,8 +11,9 @@ import Foundation
 enum Equipment: String, Codable {
   case dumbbell
   case barbell
-//  case bodyweight
-//  case bands
+  // More equipment might be added later
+  //case bodyweight
+  //case bands
 }
 
 struct ExerciseType: Codable {

@@ -12,6 +12,7 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
 
   @IBOutlet var workoutsTableView: UITableView!
   @IBOutlet weak var noWorkoutsLabel: UILabel!
+  @IBOutlet weak var labelTotalWeight: UILabel!
   
   let itsANewWorkout = -1
   var selectedWorkout: Workout = Workout(dateTime: Date(), exerciseGroupsInWorkout: [], rating: 3)
@@ -26,6 +27,7 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    updateTotalWeightFromAPI()
     if workouts.count == 0 {
       workoutsTableView.isHidden = true
       noWorkoutsLabel.isHidden = false
@@ -39,10 +41,23 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   func setupDesign() {
+    labelTotalWeight.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     self.title = "LiftingLog"
     self.workoutsTableView.separatorStyle = .none
     self.view.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     self.workoutsTableView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+  }
+  
+  func updateTotalWeightFromAPI() {
+    Networking.sharedInstance.readTotalWeightFromAPI() { (totalWeight) in
+       DispatchQueue.main.async {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let formattedNumber = numberFormatter.string(from: NSNumber(value:totalWeight))
+        self.labelTotalWeight.font = UIFont(name: "AvenirNext-DemiBoldItalic", size: 15.0)
+        self.labelTotalWeight.text = "Did you know?\nFellow lifters moved \(formattedNumber!) \(weightUnit) to date!"
+       }
+     }
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,6 +122,13 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // we need this part so in dark mode the selected cell is still light gray
+//    let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath) as! WorkoutsListTableViewCell
+//    var viewToSetUpLightGrayBGColor = UIView()
+//    viewToSetUpLightGrayBGColor.backgroundColor = UIColor.lightGray
+//    cell.selectedBackgroundView = viewToSetUpLightGrayBGColor
+//    cell.selectionStyle =
+    
     indexOfWorkoutBeingEdited = indexPath.row
     selectedWorkout = workouts[indexOfWorkoutBeingEdited]
     performSegue(withIdentifier: "AddNewWorkoutSegue", sender: nil)

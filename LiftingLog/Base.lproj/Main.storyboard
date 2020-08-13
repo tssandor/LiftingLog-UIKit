@@ -302,14 +302,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏋️‍♀️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ni-Og-yUy">
-                                <rect key="frame" x="16" y="104" width="382" height="33"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="28"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏋️‍♀️" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ni-Og-yUy">
+                                <rect key="frame" x="0.0" y="104" width="414" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="rBT-VU-ru7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="24"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8De-46-mM5">
-                                <rect key="frame" x="119" y="153" width="176" height="37"/>
+                                <rect key="frame" x="119" y="164" width="176" height="37"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -321,7 +325,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zU9-dj-AIW">
-                                <rect key="frame" x="0.0" y="214" width="414" height="682"/>
+                                <rect key="frame" x="0.0" y="225" width="414" height="671"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -388,7 +392,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="zU9-dj-AIW" secondAttribute="bottom" id="2r8-Y7-6j4"/>
-                            <constraint firstItem="x0a-aa-Vra" firstAttribute="trailing" secondItem="9ni-Og-yUy" secondAttribute="trailing" constant="16" id="5Sf-V1-POM"/>
+                            <constraint firstItem="x0a-aa-Vra" firstAttribute="trailing" secondItem="9ni-Og-yUy" secondAttribute="trailing" id="5Sf-V1-POM"/>
                             <constraint firstItem="Tof-m1-vQ3" firstAttribute="centerX" secondItem="QeG-Zx-s54" secondAttribute="centerX" id="ALI-TU-fWG"/>
                             <constraint firstItem="zU9-dj-AIW" firstAttribute="leading" secondItem="x0a-aa-Vra" secondAttribute="leading" id="DQC-eq-ewO"/>
                             <constraint firstItem="zU9-dj-AIW" firstAttribute="top" secondItem="8De-46-mM5" secondAttribute="bottom" constant="24" id="OSX-8V-Ypb"/>
@@ -396,7 +400,7 @@
                             <constraint firstItem="zU9-dj-AIW" firstAttribute="trailing" secondItem="x0a-aa-Vra" secondAttribute="trailing" id="c6G-vW-w9V"/>
                             <constraint firstItem="8De-46-mM5" firstAttribute="centerX" secondItem="QeG-Zx-s54" secondAttribute="centerX" id="dN9-gP-XEr"/>
                             <constraint firstItem="8De-46-mM5" firstAttribute="top" secondItem="9ni-Og-yUy" secondAttribute="bottom" constant="16" id="r3C-xY-kUZ"/>
-                            <constraint firstItem="9ni-Og-yUy" firstAttribute="leading" secondItem="x0a-aa-Vra" secondAttribute="leading" constant="16" id="xTv-bN-Fw9"/>
+                            <constraint firstItem="9ni-Og-yUy" firstAttribute="leading" secondItem="x0a-aa-Vra" secondAttribute="leading" id="xTv-bN-Fw9"/>
                             <constraint firstItem="9ni-Og-yUy" firstAttribute="top" secondItem="x0a-aa-Vra" secondAttribute="top" constant="16" id="yyk-DN-Ke7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x0a-aa-Vra"/>
@@ -409,6 +413,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="labelTotalWeight" destination="9ni-Og-yUy" id="ehu-Za-F20"/>
                         <outlet property="noWorkoutsLabel" destination="Tof-m1-vQ3" id="Xv3-xW-DWz"/>
                         <outlet property="workoutsTableView" destination="zU9-dj-AIW" id="P86-Ua-AnC"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="AddNewWorkoutSegue" id="OxT-cb-w89"/>

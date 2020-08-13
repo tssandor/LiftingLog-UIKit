@@ -18,6 +18,7 @@ func setupExerciseDB() {
   exerciseTypeDB = Bundle.main.decode([ExerciseType].self, from: "exerciseDB.json")
 }
 
+// We can use this in v2.0 to add lbs support
 var weightUnit: String = "kg"
 
 var setsForEquipmentType: [Equipment:[Int]] = [
@@ -39,12 +40,14 @@ func setupWeights() {
   var weights: [Float] = []
   var weightForBarbell = 20.0
   var weightForDumbbell = 1.0
+  // Barbell weights go up from 20kg (empty bar) to 300kg in 2.5kg increments
   for _ in 1...113 {
     weights.append(Float(weightForBarbell))
     weightForBarbell += 2.5
   }
   weightsForEquipmentType[.barbell] = weights
   weights = []
+  // Dumbbell weights go up from 1kg to 50kg in 1kg increments
   for _ in 1...50 {
     weights.append(Float(weightForDumbbell))
     weightForDumbbell += 1
