@@ -120,24 +120,59 @@ class NewWorkoutViewController: UIViewController, UITableViewDelegate, UITableVi
   }
   
   @IBAction func pressedSaveButton(_ sender: Any) {
-    // implement 5 star rating!
-    if indexOfWorkoutBeingEdited > itsANewWorkout {
-      let difference = calculateTotalWeightInWorkout(in: currentWorkout) - calculateTotalWeightInWorkout(in: workouts[indexOfWorkoutBeingEdited])
-      updateTotalWeightOnServer(with: difference)
-      workouts[indexOfWorkoutBeingEdited] = currentWorkout
-      saveWorkoutsToJSON()
-      self.navigationController?.popViewController(animated: true)
-    } else {
-      workouts.reverse()
-      workouts.append(currentWorkout)
-      workouts.reverse()
-      let difference = calculateTotalWeightInWorkout(in: currentWorkout)
-      updateTotalWeightOnServer(with: difference)
-      saveWorkoutsToJSON()
-      self.navigationController?.popViewController(animated: true)
-    }
+    // We ask the user to rate the workout
+    // This method will handle everything else in the chain, too
+    askForRating()
   }
     
+  func askForRating() {
+    let optionMenu = UIAlertController(title: nil, message: "💪 How was your workout?", preferredStyle: .actionSheet)
+    let stars5 = UIAlertAction(title: "Amazing ⭐️⭐️⭐️⭐️⭐️", style: .default)  { (action:UIAlertAction!) in
+      self.currentWorkout.rating = 5
+      self.saveDataAndDismissView()
+    }
+    let stars4 = UIAlertAction(title: "Good ⭐️⭐️⭐️⭐️⚪️", style: .default)  { (action:UIAlertAction!) in
+      self.currentWorkout.rating = 4
+      self.saveDataAndDismissView()
+    }
+    let stars3 = UIAlertAction(title: "Meh ⭐️⭐️⭐️⚪️⚪️", style: .default)  { (action:UIAlertAction!) in
+      self.currentWorkout.rating = 3
+      self.saveDataAndDismissView()
+    }
+    let stars2 = UIAlertAction(title: "Quite bad ⭐️⭐️⚪️⚪️⚪️", style: .default)  { (action:UIAlertAction!) in
+      self.currentWorkout.rating = 2
+      self.saveDataAndDismissView()
+    }
+    let stars1 = UIAlertAction(title: "Terrible ⭐️⚪️⚪️⚪️⚪️", style: .default)  { (action:UIAlertAction!) in
+      self.currentWorkout.rating = 1
+      self.saveDataAndDismissView()
+    }
+    optionMenu.addAction(stars5)
+    optionMenu.addAction(stars4)
+    optionMenu.addAction(stars3)
+    optionMenu.addAction(stars2)
+    optionMenu.addAction(stars1)
+    self.present(optionMenu, animated: true, completion: nil)
+  }
+  
+  func saveDataAndDismissView() {
+    if indexOfWorkoutBeingEdited > itsANewWorkout {
+       let difference = calculateTotalWeightInWorkout(in: currentWorkout) - calculateTotalWeightInWorkout(in: workouts[indexOfWorkoutBeingEdited])
+       updateTotalWeightOnServer(with: difference)
+       workouts[indexOfWorkoutBeingEdited] = currentWorkout
+       saveWorkoutsToJSON()
+       navigationController?.popViewController(animated: true)
+     } else {
+       workouts.reverse()
+       workouts.append(currentWorkout)
+       workouts.reverse()
+       let difference = calculateTotalWeightInWorkout(in: currentWorkout)
+       updateTotalWeightOnServer(with: difference)
+       saveWorkoutsToJSON()
+       navigationController?.popViewController(animated: true)
+     }
+  }
+  
   func resetViewToZero() {
     saveButton.isEnabled = false
     self.exerciseGroupsTableView.isHidden = true

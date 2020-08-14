@@ -118,17 +118,11 @@ class WorkoutsListViewController: UIViewController, UITableViewDelegate, UITable
       tableView.deleteRows(at: [indexPath], with: .fade)
       tableView.reloadData()
       saveWorkoutsToJSON()
+      updateTotalWeightFromAPI()
     }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // we need this part so in dark mode the selected cell is still light gray
-//    let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath) as! WorkoutsListTableViewCell
-//    var viewToSetUpLightGrayBGColor = UIView()
-//    viewToSetUpLightGrayBGColor.backgroundColor = UIColor.lightGray
-//    cell.selectedBackgroundView = viewToSetUpLightGrayBGColor
-//    cell.selectionStyle =
-    
     indexOfWorkoutBeingEdited = indexPath.row
     selectedWorkout = workouts[indexOfWorkoutBeingEdited]
     performSegue(withIdentifier: "AddNewWorkoutSegue", sender: nil)

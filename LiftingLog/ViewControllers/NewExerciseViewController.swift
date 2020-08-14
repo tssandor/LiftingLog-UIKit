@@ -216,14 +216,6 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
   }
   
-//  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//    if pickerState == .selectingExercise {
-//      return exerciseTypeDB[row].exerciseName
-//    } else {
-//      return setRepWeightStringsForPicker[component][row]
-//    }
-//  }
-  
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     if pickerState == .selectingExercise {
       selectedExerciseArrayIndex = row
